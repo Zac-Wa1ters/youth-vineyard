@@ -123,77 +123,77 @@ class GalleryEventPage(Page): #when you click on one event in gallery
     ]
 
 
-    class EventPage(Page): #All the event details.
-        
-        event_date = models.DateField()
-        event_time = models.TimeField()
-        event_location = models.CharField(max_length=255)
-        event_description = RichTextField()
+class EventPage(Page): #All the event details.
+    
+    event_date = models.DateField()
+    event_time = models.TimeField()
+    event_location = models.CharField(max_length=255)
+    event_description = RichTextField()
 
-        ticket_price = models.DecimalField(
-            max_digits=6,
-            decimal_places=2,
-            null=True,
-            blank=True
-        )
+    ticket_price = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
 
-        tickets_available = models.PositiveIntegerField(
-            null=True,
-            blank=True
-        )
+    tickets_available = models.PositiveIntegerField(
+        null=True,
+        blank=True
+    )
 
-        content_panels = Page.content_panels + [
-            FieldPanel("event_date"),
-            FieldPanel("event_time"),
-            FieldPanel("event_location"),
-            FieldPanel("event_description"),
-            FieldPanel("ticket_price"),
-            FieldPanel("tickets_available"),
-        ]
+    content_panels = Page.content_panels + [
+        FieldPanel("event_date"),
+        FieldPanel("event_time"),
+        FieldPanel("event_location"),
+        FieldPanel("event_description"),
+        FieldPanel("ticket_price"),
+        FieldPanel("tickets_available"),
+    ]
             
 
-    class EventIndexPage(Page): #This loops through EventPage and gets all the info to render on the Box Office Page. 
-        
-        def get_context(self, request):
-            context = super().get_context(request)
-            context["events"] = EventPage.objects.child_of(self).live().order_by("event_date")
-            return context
+class EventIndexPage(Page): #This loops through EventPage and gets all the info to render on the Box Office Page. 
+    
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["events"] = EventPage.objects.child_of(self).live().order_by("event_date")
+        return context
         
 
-    class ProductPage(Page):
+class ProductPage(Page):
 
-        product_image = models.ForeignKey(
-        "wagtailimages.Image",
+    product_image = models.ForeignKey(
+    "wagtailimages.Image",
+    null=True,
+    blank=True,
+    on_delete=models.SET_NULL,
+    related_name="+"
+    )
+
+    price = models.DecimalField(
+        max_digits=8,
+        decimal_places=2
+    )
+
+    description= RichTextField()
+    inventory = models.PositiveIntegerField(
         null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+"
-        )
+        blank=True
+    )
 
-        price = models.DecimalField(
-            max_digits=8,
-            decimal_places=2
-        )
-
-        description= RichTextField()
-        inventory = models.PositiveIntegerField(
-            null=True,
-            blank=True
-        )
-
-        content_panels = Page.content_panels + [
-            FieldPanel("price"),
-            FieldPanel("description"),
-            FieldPanel("inventory")
-        ]
+    content_panels = Page.content_panels + [
+        FieldPanel("price"),
+        FieldPanel("description"),
+        FieldPanel("inventory")
+    ]
 
 
-    class StoreIndexPage(Page):
+class StoreIndexPage(Page):
 
-        def get_context(self, request):
-            context = super().get_context(request)
-            context["products"] = ProductPage.objects.live().child_of(self).live()
-            return context
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["products"] = ProductPage.objects.live().child_of(self).live()
+        return context
 
 
 

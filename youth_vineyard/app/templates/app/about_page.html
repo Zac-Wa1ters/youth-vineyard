@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load wagtailcore_tags wagtailimages_tags %}
+
 {% block content %}
 
 <section class="hero">
@@ -20,13 +22,13 @@
 
 <section>
     <h1>Mission</h1>
-    {{ mission_statement|richtext}}
+    {{ page.mission_statement|richtext}}
 </section>
 
 
 <section>
     <h1>Mental Health Service</h1>
-    {{ page.mentalhealth_service|richtext}}
+    {{ page.mentalhealth_services|richtext}}
 </section>
 
 

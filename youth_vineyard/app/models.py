@@ -8,7 +8,7 @@ from wagtail.snippets.models import register_snippet
 from django import forms
 
 class HomePage(Page):
-    pass
+     subpage_types = ["app.LandingPage"]
 
         
 @register_snippet
@@ -198,6 +198,8 @@ class StoreIndexPage(Page):
 
 
 class LandingPage(Page):
+    parent_page_types = ["app.HomePage"]
+    
     title_text = models.CharField(max_length=250, blank=True)
     quote = models.CharField(max_length=250, blank=True)
     main_image = models.ForeignKey(
@@ -232,7 +234,8 @@ class LandingPage(Page):
                                 related_name="+",)
     
     gallery_button_text = models.CharField(max_length=100, blank=True)
-    gallery_button_link = models.URLField(blank=True)
+    gallery_button_link = models.CharField(max_length=255, blank=True)
+    #gallery_button_link = models.URLField(blank=True)
 
     more_info_header = models.CharField(max_length=100, blank=True)    
     more_info_text = RichTextField(blank=True)
@@ -244,7 +247,8 @@ class LandingPage(Page):
                                 related_name="+",)
     
     info_button_text = models.CharField(max_length=100, blank=True)
-    info_button_link = models.URLField(blank=True)
+    info_button_link = models.CharField(max_length=255, blank=True)
+    # info_button_link = models.URLField(blank=True)
     
     content_panels = Page.content_panels + [
         MultiFieldPanel([

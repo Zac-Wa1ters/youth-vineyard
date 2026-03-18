@@ -1,30 +1,52 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags %}
 
 {% block content %}
 
-
     <h1>{{ page.title }}</h1>
 
-    <p>Date: {{page.event_date }} </p>
-    <p>Time: {{ page.event_time }}</p>
-    <p>Location: {{ page.event_location }}</p>
-    {% if page.ticket_price %}
-        <p>Admission Cost: ${{ page.ticket_price }}</p>
-    {% endif %}
+    <p><strong>Date:</strong> {{ page.event_date }}</p>
+    <p><strong>Time:</strong> {{ page.event_time }}</p>
+    <p><strong>Location:</strong> {{ page.event_location }}</p>
 
     <div>
-        <p>{{ page.event_description|richtext }} </p>
+        {{ page.event_description|richtext }}
     </div>
 
+    <hr>
 
-{% if page.tickets_available and page.tickets_available > 0 %}
-     <a href="#" class="button">
-                Buy Tickets
-            </a>
-{% else %}
-    <p>This event is Sold Out.</p>
-{% endif %}
+    <h2>Tickets</h2>
 
+    {% if page.ticket_types.all %}
+
+        {% for ticket in page.ticket_types.all %}
+
+            {% if ticket.tickets_available > 0 %}
+
+                <button
+                    class="snipcart-add-item"
+                    data-item-id="{{ ticket.sku }}"
+                    data-item-name="{{ page.title }} - {{ ticket.name }}"
+                    data-item-price="{{ ticket.price }}"
+                    data-item-url="{{ page.full_url }}"
+                    data-item-description="{{ page.title }} {{ ticket.name }}"
+                    data-item-max-quantity="{{ ticket.tickets_available }}"
+                >
+                    Buy {{ ticket.name }} - ${{ ticket.price }}
+                </button>
+
+            {% else %}
+
+                <p><strong>{{ ticket.name }}</strong> — Sold Out</p>
+
+            {% endif %}
+
+        {% empty %}
+
+            <p>No tickets are currently available for this event.</p>
+
+        {% endfor %}
+
+    {% endif %}
 
 {% endblock %}

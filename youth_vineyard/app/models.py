@@ -137,30 +137,48 @@ class GalleryEventPage(Page): #when you click on one event in gallery
 
 class EventPage(Page): #All the event details.
     
+    sku = models.CharField(max_length=255, blank=True, null=True)
     event_date = models.DateField()
     event_time = models.TimeField()
     event_location = models.CharField(max_length=255)
     event_description = RichTextField()
 
-    ticket_price = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
-        null=True,
-        blank=True
-    )
-
-    tickets_available = models.PositiveIntegerField(
-        null=True,
-        blank=True
-    )
-
     content_panels = Page.content_panels + [
+        FieldPanel("sku"),
         FieldPanel("event_date"),
         FieldPanel("event_time"),
         FieldPanel("event_location"),
         FieldPanel("event_description"),
-        FieldPanel("ticket_price"),
+
+        InlinePanel("ticket_types", label="Ticket Types"),
+    ]
+
+class EventTicketType(Orderable):
+    event = ParentalKey(
+        "app.EventPage",
+        related_name="ticket_types",
+        on_delete=models.CASCADE
+    )
+
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(
+        max_digits=6,
+        decimal_places=2
+    )
+
+    tickets_available = models.PositiveBigIntegerField(null=True)
+    sku = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True
+    )
+
+
+    FieldPanels = [
+        FieldPanel("name"),
+        FieldPanel("price"),
         FieldPanel("tickets_available"),
+        FieldPanel("sku")
     ]
             
 
@@ -220,7 +238,7 @@ class LandingPage(Page):
     
     gallery_button_text = models.CharField(max_length=100, blank=True)
     gallery_button_link = models.CharField(max_length=255, blank=True)
-    #gallery_button_link = models.URLField(blank=True)
+    
 
     more_info_header = models.CharField(max_length=100, blank=True)    
     more_info_text = RichTextField(blank=True)
@@ -233,7 +251,7 @@ class LandingPage(Page):
     
     info_button_text = models.CharField(max_length=100, blank=True)
     info_button_link = models.CharField(max_length=255, blank=True)
-    # info_button_link = models.URLField(blank=True)
+    
     
     content_panels = Page.content_panels + [
         MultiFieldPanel([

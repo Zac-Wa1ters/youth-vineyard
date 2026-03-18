@@ -1,8 +1,14 @@
 from django.db import models
-from wagtail.models import Page
+
+from modelcluster.fields import ParentalKey
+
+
+from wagtail.models import Page, Orderable
 from wagtail.fields import RichTextField
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.snippets.models import register_snippet
+
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
 
 from django import forms
@@ -10,6 +16,12 @@ from django import forms
 class HomePage(Page):
      subpage_types = ["app.LandingPage"]
 
+@register_setting
+class SnipcartSettings(BaseSiteSetting):
+    api_key = models.CharField(
+        max_length=255,
+        help_text='Your Snipcart public API key'
+    )
         
 @register_snippet
 class SiteBranding(models.Model):
@@ -160,33 +172,6 @@ class EventIndexPage(Page): #This loops through EventPage and gets all the info 
         return context
         
 
-class ProductPage(Page):
-
-    product_image = models.ForeignKey(
-    "wagtailimages.Image",
-    null=True,
-    blank=True,
-    on_delete=models.SET_NULL,
-    related_name="+"
-    )
-
-    price = models.DecimalField(
-        max_digits=8,
-        decimal_places=2
-    )
-
-    description= RichTextField()
-    inventory = models.PositiveIntegerField(
-        null=True,
-        blank=True
-    )
-
-    content_panels = Page.content_panels + [
-        FieldPanel("price"),
-        FieldPanel("description"),
-        FieldPanel("inventory")
-    ]
-
 
 class StoreIndexPage(Page):
 
@@ -273,4 +258,56 @@ class LandingPage(Page):
         ], heading="More info section"),
 
         
+    ]
+
+class ProductPage(Page):
+
+    sku = models.CharField(max_length=255, blank=True, null=True)
+    price = models.DecimalField(decimal_places=2, max_digits=10)
+    product_image = models.ForeignKey(
+                                        "wagtailimages.Image",
+                            null=True,
+                            blank=True,
+                            on_delete=models.SET_NULL,
+                            related_name="+",)
+    
+    description = RichTextField(blank=True, null=True)
+    inventory = models.PositiveIntegerField(
+    null=True,
+    blank=True
+    )
+    content_panels = Page.content_panels + [
+        FieldPanel('sku'),
+        FieldPanel('price'),
+        FieldPanel('product_image'),
+        FieldPanel('description'),
+        FieldPanel('inventory'),
+        InlinePanel('custom_fields', label = 'Custom fields'),
+    ]
+    def get_context(self, request):
+        context = super().get_context(request)
+
+        fields = []
+        for f in self.custom_fields.get_object_list():
+            if f.options:
+                f.options_array = f.options.split('|')
+            else:
+                f.options_array = []
+
+            fields.append(f)
+
+        context['custom_fields'] = fields
+
+        return context
+
+
+
+class ProductCustomField(Orderable):
+    product = ParentalKey(ProductPage, on_delete=models.CASCADE, related_name='custom_fields')
+    name = models.CharField(max_length=255)
+    options = models.CharField(max_length=500, null=True, blank=True)
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('options')
     ]

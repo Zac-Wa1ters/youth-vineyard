@@ -10,13 +10,29 @@
 
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
-<body>
 
+
+<body>
+<main>
     {% wagtailuserbar %}
 
     {% include "includes/navbar.html" %}
 
-    <main>
+    {% load static wagtailsettings_tags %}
+    {% get_settings %}
+
+    {% if settings.app.SnipcartSettings.api_key %}
+        <script async src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"></script>
+
+        <div hidden id="snipcart"
+            data-api-key="{{ settings.app.SnipcartSettings.api_key }}">
+        </div>
+
+        <link rel="stylesheet"
+            href="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css" />
+    {% endif %}
+
+    
 
 
         {% block content %}{% endblock %}

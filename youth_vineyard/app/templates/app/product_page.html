@@ -6,7 +6,7 @@
 <h1>{{ page.title }}</h1>
 
 {% if page.product_image %}
-    {% image page.product_image fill-600x400 %}
+    {% image page.product_image max-600x400 %}
 {% endif %}
 
 <p>Price: ${{ page.price }}</p>
@@ -15,16 +15,51 @@
     {{ page.description|richtext }}
 </div>
 
+    {% for f in custom_fields %}
+        {% if f.options_array %}
+            <label>{{ f.name }}</label>
+            <select class="custom-field-select" data-field="{{ forloop.counter }}">
+                {% for opt in f.options_array %}
+                    <option>{{ opt }}</option>
+                {% endfor %}
+            </select>
+        {% endif %}
+    {% endfor %}
+
 {% if page.inventory and page.inventory > 0 %}
 
-<button class="button">
-    Add to Cart
-</button>
+    <button
+        class="snipcart-add-item"
+        data-item-name="{{ page.title }}"
+        data-item-id="{{ page.sku }}"
+        data-item-url="{{ page.get_full_url }}"
+        data-item-price="{{ page.price }}"
+        data-item-description="{{ page.description }}"
+        data-item-image="{{ img.url }}"
+
+        {% for f in custom_fields %}
+            data-item-custom{{ forloop.counter }}-name="{{ f.name }}"
+            data-item-custom{{ forloop.counter }}-options="{{ f.options }}"
+        {% endfor %}
+    >
+        Add to cart
+    </button>
 
 {% else %}
 
 <p>Out of Stock</p>
 
 {% endif %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.custom-field-select').forEach(select => {
+        select.onchange = function (event) {
+            const fieldIndex = event.target.dataset.field;
 
+            document.querySelector('.snipcart-add-item')
+                .dataset['itemCustom' + fieldIndex + 'Value'] = event.target.value;
+        };
+    });
+});
+</script>
 {% endblock %}

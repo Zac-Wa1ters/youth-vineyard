@@ -71,7 +71,7 @@ class AboutPage(Page):
     founder_bio = RichTextField()
     mission_statement = RichTextField()
     mentalhealth_services = RichTextField()
-    donate = RichTextField()
+    donate = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("hero_title"),

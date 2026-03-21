@@ -3,17 +3,38 @@
 
 {% block content %}
 
-    {% for event in page.get_children.live %}
+<div>
+  <a href="?region=water_valley"
+     class="{% if active_region == 'water_valley' %}active{% endif %}">
+    Water Valley
+  </a>
 
-        <div class="event-card">
-            <h1>{{ event.specific.title }}</h1>
-            <p>{{ event.specific.event_date }}</p>
+  <a href="?region=quad_cities"
+     class="{% if active_region == 'quad_cities' %}active{% endif %}">
+    Quad Cities
+  </a>
+</div>
 
-            <a href="{{ event.url }}" class="button">
-                See Details
-            </a>
-        </div>
+<h2>
+  {% if active_region == "quad_cities" %}
+    Quad Cities Events
+  {% else %}
+    Water Valley Events
+  {% endif %}
+</h2>
 
-    {% endfor %}
+{% for event in events %}
+    <div class="event">
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.event_date }} at {{ event.event_time }}</p>
+        <p>{{ event.venue_name }}</p>
+
+        <a href="{{ event.url }}" class="button">
+            See Details
+        </a>
+    </div>
+{% empty %}
+    <p>No events available.</p>
+{% endfor %}
 
 {% endblock %}

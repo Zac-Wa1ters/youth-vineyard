@@ -140,15 +140,19 @@ class EventPage(Page): #All the event details.
     sku = models.CharField(max_length=255, blank=True, null=True)
     event_date = models.DateField()
     event_time = models.TimeField()
-    event_location = models.CharField(max_length=255)
+    venue_name = models.CharField(max_length=255)
     event_description = RichTextField()
+    is_quad_cities = models.BooleanField(
+        default=False,
+        help_text="Check if this event takes place in the Quad Cities. Leave unchecked for Water Valley.")
 
     content_panels = Page.content_panels + [
         FieldPanel("sku"),
         FieldPanel("event_date"),
         FieldPanel("event_time"),
-        FieldPanel("event_location"),
+        FieldPanel("venue_name"),
         FieldPanel("event_description"),
+        FieldPanel("is_quad_cities", heading="Region"),
 
         InlinePanel("ticket_types", label="Ticket Types"),
     ]
@@ -184,11 +188,22 @@ class EventTicketType(Orderable):
 
 class EventIndexPage(Page): #This loops through EventPage and gets all the info to render on the Box Office Page. 
     
-    def get_context(self, request):
-        context = super().get_context(request)
-        context["events"] = EventPage.objects.child_of(self).live().order_by("event_date")
-        return context
-        
+   def get_context(self, request):
+    context = super().get_context(request)
+
+    events = EventPage.objects.child_of(self).live().order_by("event_date")
+
+    region = request.GET.get("region", "water_valley")
+
+    if region == "quad_cities":
+        events = events.filter(is_quad_cities=True)
+    else:
+        events = events.filter(is_quad_cities=False)
+
+    context["events"] = events
+    context["active_region"] = region
+
+    return context
 
 
 class StoreIndexPage(Page):

@@ -1,14 +1,20 @@
+:root {
+  --bs-primary: #7C0A02;
+  --bs-body-font-family: 'Your Font', sans-serif;
+  --bs-body-color: #F1F1F1;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    color: #000459;
-    background: #ff750b;
+    text-align: center;
 }
 
 .landing-page {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    text-align: center;
 }
 
 .title-section {
@@ -19,12 +25,14 @@ body {
 .landing-title {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: var(--bs-primary);
 }
 
 .landing-quote {
     font-size: 1.25rem;
     font-style: italic;
     margin-bottom: 2rem;
+    color: var(--bs-primary);
 }
 
 .main-image {
@@ -43,6 +51,65 @@ body {
     font-size: 2rem;
     margin-bottom: 1.5rem;
 }
+
+
+/* events related css */
+
+.event-index-page {
+  color: var(--bs-primary);
+}
+
+.event-page {
+  color: var(--bs-primary);
+}
+
+.region-toggle {
+  margin-bottom: 1rem;
+}
+
+.region-toggle .btn-outline-primary {
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.region-toggle .btn-outline-primary:hover,
+.region-toggle .btn-outline-primary.active {
+  background-color: var(--bs-primary);
+  color: white;
+}
+
+.region-toggle .btn-outline-primary.active {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: white;
+}
+
+.btn-primary{
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: white;
+  opacity: 0.85;
+}
+
+.card {
+    color: var(--bs-primary);
+}
+
+
+
+.homepage{
+    color: var(--bs-primary);
+}
+
+
+
+
 
 .preview-row {
     display: grid;
@@ -104,7 +171,7 @@ body {
 }
 
 .navbar {
-    background: #000459;
+    background: var(--bs-primary);
     padding: 15px 30px;
 }
 
@@ -140,7 +207,7 @@ body {
     gap: 20px;
     margin: 0;
     padding: 0;
-    background: #000459;
+    background: var(--bs-primary);
 }
 
 .nav-links a {
@@ -156,7 +223,7 @@ body {
 .site-footer {
     text-align: center;
     padding: 20px;
-    background: #000459;
+    background: var(--bs-primary);
     color: white;
 }
 

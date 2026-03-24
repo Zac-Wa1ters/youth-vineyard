@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="homepage">
   <h1>{{ page.title }}</h1>
 
   {% if page.specific %}
     {{ page.specific }}
   {% endif %}
+
+</div>
 
 {% endblock %}

@@ -3,6 +3,8 @@
 
 {% block content %}
 
+<div class="event-page">
+
     <h1>{{ page.title }}</h1>
 
     <p><strong>Date:</strong> {{ page.event_date }}</p>
@@ -48,5 +50,7 @@
         {% endfor %}
 
     {% endif %}
+
+</div>
 
 {% endblock %}

@@ -107,7 +107,7 @@ class KeynotePage(Page):
 
 class GalleryIndexPage(Page): #for rendering the entire gallery in a grid 
     template = "app/gallery_index_page.html"
-    parent_page_types = ["app.HomePage"] #what ever file is rendering the home page nav bar
+    parent_page_types = ["app.LandingPage"] #what ever file is rendering the home page nav bar
     subpage_types = ["app.GalleryEventPage"] #any children pages inside the index
     content_panels = Page.content_panels
 
@@ -133,11 +133,40 @@ class GalleryEventPage(Page): #when you click on one event in gallery
         FieldPanel("date"),
         FieldPanel("description"),
         FieldPanel("hero_image"),
-        FieldPanel("video_url")
+        FieldPanel("video_url"),
+        InlinePanel("gallery_images", label = "Gallery Images"),
+        InlinePanel("gallery_videos", label = "Gallery Videos")
+
+
     ]
 
+class GalleryImagePage(Orderable):
+    page = ParentalKey(
+        'GalleryEventPage',
+        on_delete = models.CASCADE,
+        related_name = "gallery_images"
+    )
+    image=models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+"
+    )
 
-class EventPage(Page): #All the event details.
+    panels = [FieldPanel('image')]
+
+class GalleryVideoPage(Page):
+    page = ParentalKey(
+        'GalleryEventPage',
+        on_delete = models.CASCADE,
+        related_name = "gallery_videos"
+    )
+    video_url = models.URLField(blank=True, null=True)
+    panels = [FieldPanel('video_url')]
+    
+
+class EventPage(Page): 
     
     sku = models.CharField(max_length=255, blank=True, null=True)
     event_date = models.DateField()

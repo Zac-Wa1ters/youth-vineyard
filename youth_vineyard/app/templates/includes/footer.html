@@ -1,19 +1,19 @@
-<footer class="site-footer">
-    <div class="footer-container">
+<footer class="fixed-bottom bg-primary text-white text-center py-3">
+    <div class="container">
         {% if site_footer %}
-            <div class="footer-text">
+            <div class="mb-1">
                 {{ site_footer.footer_text|safe }}
             </div>
 
             {% if site_footer.contact_link %}
-                <p>
-                    <a href="{{ site_footer.contact_link }}">
+                <p class="mb-0">
+                    <a href="{{ site_footer.contact_link }}" class="text-white text-decoration-underline">
                         {{ site_footer.contact_text|default:"Contact" }}
                     </a>
                 </p>
             {% endif %}
         {% else %}
-            <p>Footer not set yet.</p>
+            <p class="mb-0">Footer not set yet.</p>
         {% endif %}
     </div>
 </footer>

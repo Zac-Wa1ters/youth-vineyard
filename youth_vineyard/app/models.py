@@ -44,7 +44,7 @@ class SiteBranding(models.Model):
 class SiteFooter(models.Model):
     footer_text = RichTextField(blank=True)
     contact_text = models.CharField(max_length=100, blank=True, default="Contact")
-    contact_link = models.URLField(blank=True)
+    contact_link = models.URLField(max_length=1000,blank=True)
 
     panels = [
         FieldPanel("footer_text"),
@@ -123,7 +123,7 @@ class GalleryEventPage(Page): #when you click on one event in gallery
         related_name="+"
     )
 
-    video_url = models.URLField(blank=True)
+    video_url = models.URLField(max_length=1000,blank=True)
     parent_page_types = ["app.GalleryIndexPage"]
     
 
@@ -160,7 +160,7 @@ class GalleryVideoPage(Orderable):
         on_delete = models.CASCADE,
         related_name = "gallery_videos"
     )
-    video_url = models.URLField(blank=True, null=True)
+    video_url = models.URLField(max_length=1000, blank=True, null=True)
     panels = [FieldPanel('video_url')]
     
 
@@ -387,3 +387,41 @@ class ProductCustomField(Orderable):
         FieldPanel('name'),
         FieldPanel('options')
     ]
+
+class ContactPage(Page):
+    
+    # Content
+    intro_text = RichTextField(
+        blank=True,
+        help_text="Optional introductory text shown above the contact details."
+    )
+
+    # Contact Details
+    email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=20, blank=True)
+    address = models.TextField(blank=True)
+
+    # Social Links
+    facebook_url = models.URLField(max_length=1000, blank=True, verbose_name="Facebook URL")
+    instagram_url = models.URLField(max_length=1000, blank=True, verbose_name="Instagram URL")
+    twitter_url = models.URLField(max_length=1000, blank=True, verbose_name="Twitter/X URL")
+
+    # Optional Map Embed
+    map_embed_url = models.URLField(
+        max_length=1000, blank=True,
+        help_text="Paste a Google Maps embed URL here."
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("intro_text"),
+        FieldPanel("email"),
+        FieldPanel("phone"),
+        FieldPanel("address"),
+        FieldPanel("facebook_url"),
+        FieldPanel("instagram_url"),
+        FieldPanel("twitter_url"),
+        FieldPanel("map_embed_url"),
+    ]
+
+    class Meta:
+        verbose_name = "Contact Page"

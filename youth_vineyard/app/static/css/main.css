@@ -3,26 +3,18 @@
    ======================== */
 
 
-
-
 :root {
   --bs-primary: #7C0A02;
-  --bs-secondary-color: #7C0A02;
-  --bs-body-font-family: 'Palatino', sans-serif;
-  --bs-body-color: #F1F1F1;
+  --bs-primary-rgb: 124, 10, 2;  /* RGB values of #7C0A02 */
+  --bs-body-font-family: Palatino, "Palatino Linotype", Georgia, serif;
+  --bs-font-sans-serif: Palatino, "Palatino Linotype", Georgia, serif;
+  --bs-body-color: #7C0A02;
 }
-
-:root {
-    --bs-body-font-family: Palatino, "Palatino Linotype", Georgia, serif;
-    --bs-font-sans-serif: Palatino, "Palatino Linotype", Georgia, serif;
-}
-
 body {
     font-family: Palatino, "Palatino Linotype", Georgia, serif;
     margin: 0;
     text-align: center;
 }
-
 
 
 
@@ -406,6 +398,11 @@ color: white;
      color: var(--bs-primary);
 }
 
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
 /* ========================
    PRODUCT PAGE
    ======================== */
@@ -517,26 +514,6 @@ color: white;
 
 
 
-
-
-
-
-/* ========================
-   FOOTER
-   ======================== */
-
-
-.site-footer {
-    text-align: center;
-    padding: 20px;
-    background: var(--bs-primary);
-    color: white;
-}
-
-.site-footer a {
-    color: #fff;
-    text-decoration: underline;
-}
 
 
 

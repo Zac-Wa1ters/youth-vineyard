@@ -2,34 +2,35 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<div class="store-index-page">
+<div class="container py-4">
 
-<h1>{{ page.title }}</h1>
+    <h1 class="mb-4">{{ page.title }}</h1>
 
-<div class="store-grid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
 
-{% load wagtailimages_tags %}
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
 
-{% for product in products %}
+                {% if product.product_image %}
+                    {% image product.product_image width-400 as product_img %}
+                    <img src="{{ product_img.url }}"
+                         class="card-img-top"
+                         alt="{{ product.title }}">
+                {% endif %}
 
-    <div class="product-card">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text text-muted">${{ product.price }}</p>
+                    <a href="{{ product.url }}" class="btn btn-primary mt-auto">
+                        View Product
+                    </a>
+                </div>
 
-    {% if product.product_image %}
-        {% image product.product_image fill-400x300 %}
-    {% endif %}
+            </div>
+        </div>
+        {% endfor %}
 
-    
-        <h2>{{ product.title }}</h2>
-        <p>${{ product.price }}</p>
-
-        <a href="{{ product.url }}" class="button">
-            View Product
-        </a>
     </div>
-
-{% endfor %}
-
 </div>
-</div>
-
 {% endblock %}

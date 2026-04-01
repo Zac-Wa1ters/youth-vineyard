@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<div class="container py-4">
+
+    <h1 class="mb-4">{{ page.title }}</h1>
+
+    {% if page.intro_text %}
+        <div class="mb-4">
+            {{ page.intro_text|richtext }}
+        </div>
+    {% endif %}
+
+<div class="row g-4 justify-content-center">
+
+    <!-- Contact Details -->
+    <div class="{% if page.map_embed_url %}col-md-6{% else %}col-md-8 col-lg-6{% endif %}">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+
+                    <h2 class="h5 card-title mb-3">Get in Touch</h2>
+
+                    {% if page.email %}
+                        <p class="mb-2">
+                            <i class="bi bi-envelope me-2"></i>
+                            <a href="mailto:{{ page.email }}" class="text-decoration-none text-primary">
+                                {{ page.email }}
+                            </a>
+                        </p>
+                    {% endif %}
+
+                    {% if page.phone %}
+                        <p class="mb-2">
+                            <i class="bi bi-telephone me-2"></i>
+                            <a href="tel:{{ page.phone }}" class="text-decoration-none text-primary">
+                                {{ page.phone }}
+                            </a>
+                        </p>
+                    {% endif %}
+
+                    {% if page.address %}
+                        <p class="mb-2">
+                            <i class="bi bi-geo-alt me-2"></i>
+                            {{ page.address|linebreaksbr }}
+                        </p>
+                    {% endif %}
+
+                    <!-- Social Links -->
+                    {% if page.facebook_url or page.instagram_url or page.twitter_url %}
+                        <hr>
+                        <div class="d-flex gap-3 fs-4">
+                            {% if page.facebook_url %}
+                                <a href="{{ page.facebook_url }}"
+                                   class="text-decoration-none"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+                            {% endif %}
+                            {% if page.instagram_url %}
+                                <a href="{{ page.instagram_url }}"
+                                   class="text-decoration-none"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                            {% endif %}
+                            {% if page.twitter_url %}
+                                <a href="{{ page.twitter_url }}"
+                                   class="text-decoration-none"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="bi bi-twitter-x"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Embed -->
+        {% if page.map_embed_url %}
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body p-0">
+                        <iframe
+                            src="{{ page.map_embed_url }}"
+                            width="100%"
+                            height="100%"
+                            style="min-height: 300px; border: 0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

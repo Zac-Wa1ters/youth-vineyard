@@ -153,3 +153,8 @@ PUBLIC_BASE_URL = "https://nondilatable-overmournfully-shawana.ngrok-free.dev"
 CSRF_TRUSTED_ORIGINS = [
     "https://nondilatable-overmournfully-shawana.ngrok-free.dev",
 ]
+
+
+
+
+

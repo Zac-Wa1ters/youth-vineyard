@@ -2,18 +2,33 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
+<div class="gallery-index-page">
+<div class="container py-5">
+    <h1 class="mb-4">{{ page.title }}</h1>
 
-<h1>{{ page.title }}</h1>
-<div class="gallery">
+    <div class="row g-4">
+        {% for event in page.get_children.live %}
+            {% with event_page=event.specific %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <a href="{% pageurl event %}" class="text-decoration-none text-dark">
+                            {% if event_page.hero_image %}
+                                {% image event_page.hero_image fill-600x400 as img %}
+                                <img src="{{ img.url }}" class="card-img-top" alt="{{ event_page.title }}">
+                            {% endif %}
 
-    {% for event in page.get_children.live %}
-        <div>
-            <a href="{{ event.url }}">
-                {{ event.title }}
-            </a>
-        </div>
-    {% endfor %}
-
+                            <div class="card-body">
+                                <h5 class="card-title mb-2">{{ event_page.title }}</h5>
+                                {% if event_page.date %}
+                                    <p class="card-text text-muted mb-0">{{ event_page.date }}</p>
+                                {% endif %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endwith %}
+        {% endfor %}
+    </div>
 </div>
-
+</div>
 {% endblock %}

@@ -7,6 +7,7 @@
 
 :root {
   --bs-primary: #7C0A02;
+  --bs-secondary-color: #7C0A02;
   --bs-body-font-family: 'Palatino', sans-serif;
   --bs-body-color: #F1F1F1;
 }
@@ -378,10 +379,44 @@ section button:hover {
     margin-bottom: 1.5rem;
 }
 
+.gallery-index-page{
+    color: var(--bs-primary);
+}
 
 
+/* ========================
+   GALLERY EVENT CHILD PAGE 
+   ======================== */
 
+  .gallery-event-page {
+    color: var(--bs-primary);
+}
 
+/* ========================
+   STORE INDEX
+   ======================== */
+
+.store-index-page{
+     color: var(--bs-primary);
+}
+
+/* ========================
+   PRODUCT PAGE
+   ======================== */
+
+   .product-page{
+    color: var(--bs-primary);
+   }
+
+   .snipcart-add-item{
+    color: var(--bs-primary);
+    border-color: var(--bs-primary);
+   }
+
+   .snipcart-add-item.btn-primary:hover{
+    background-color: var(--bs-primary);
+    color: white;
+   }
 
 /* ========================
    EVENTS RELATED PAGES
@@ -445,6 +480,7 @@ section button:hover {
 .keynote{
     color: var(--bs-primary);
 }
+
 
 
 

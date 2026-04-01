@@ -13,8 +13,6 @@ from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
 from django import forms
 
-class HomePage(Page):
-     subpage_types = ["app.LandingPage"]
 
 @register_setting
 class SnipcartSettings(BaseSiteSetting):
@@ -237,17 +235,8 @@ class EventIndexPage(Page): #This loops through EventPage and gets all the info 
     return context
 
 
-class StoreIndexPage(Page):
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        context["products"] = ProductPage.objects.live().child_of(self).live()
-        return context
-
-
 
 class LandingPage(Page):
-    parent_page_types = ["app.HomePage"]
     
     title_text = models.CharField(max_length=250, blank=True)
     quote = models.CharField(max_length=250, blank=True)
@@ -336,8 +325,19 @@ class LandingPage(Page):
         
     ]
 
+
+
+class StoreIndexPage(Page):
+
+    subpage_types = ["app.ProductPage"] 
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["products"] = ProductPage.objects.live().child_of(self)
+        return context
+
 class ProductPage(Page):
 
+    parent_page_types = ["app.StoreIndexPage"]
     sku = models.CharField(max_length=255, blank=True, null=True)
     price = models.DecimalField(decimal_places=2, max_digits=10)
     product_image = models.ForeignKey(

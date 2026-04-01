@@ -4,6 +4,53 @@
 {% block content %}
 
 <div class="event-index-page text-center">
+    <div class="btn-group region-toggle mb-3">
+         <a href="?region=water_valley"
+          class="btn btn-outline-primary {% if active_region == 'water_valley' %}active{% endif %}">
+          Water Valley
+        </a>
+
+        <a href="?region=quad_cities"
+        class="btn btn-outline-primary {% if active_region == 'quad_cities' %}active{% endif %}">
+          Quad Cities
+        </a>
+    </div>
+    <h2>
+    {% if active_region == "quad_cities" %}
+    Quad Cities Events
+  {% else %}
+    Water Valley Events
+  {% endif %}
+    </h2>
+    <div class="row justify-content-center">
+        {% for event in events %}
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card mb-3 p-3">
+                <h5>{{ event.title }}</h5>
+                <p>{{ event.event_date }} at {{ event.event_time }}</p>
+                <p>{{ event.venue_name }}</p>
+                <a href="{{ event.url }}" class="btn btn-primary w-auto">
+                    See Details
+                </a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No events available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% comment %} <div class="event-index-page text-center">
 
 <div class="btn-group region-toggle mb-3">
   <a href="?region=water_valley"
@@ -41,6 +88,4 @@
     <p>No events available.</p>
 {% endfor %}
 
-</div>
-
-{% endblock %}
+</div> {% endcomment %}

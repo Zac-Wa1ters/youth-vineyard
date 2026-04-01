@@ -5,6 +5,12 @@
 
 <div class="event-page">
 
+    <div class="text-start mt-4 ms-3">
+        <a href="{{ page.get_parent.url }}" class="btn btn-outline-primary">
+            ← Back to All Events
+        </a>
+    </div>
+
     <h1>{{ page.title }}</h1>
 
     <p><strong>Date:</strong> {{ page.event_date }}</p>
@@ -14,7 +20,7 @@
     <div>
         {{ page.event_description|richtext }}
     </div>
-
+    
     <hr>
 
     <h2>Tickets</h2>
@@ -26,7 +32,7 @@
             {% if ticket.tickets_available > 0 %}
 
                 <button
-                    class="snipcart-add-item"
+                    class="snipcart-add-item btn btn-primary"
                     data-item-id="{{ ticket.sku }}"
                     data-item-name="{{ page.title }} - {{ ticket.name }}"
                     data-item-price="{{ ticket.price }}"
@@ -37,6 +43,8 @@
                 >
                     Buy {{ ticket.name }} - ${{ ticket.price }}
                 </button>
+
+                <hr>
 
             {% else %}
 

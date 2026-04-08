@@ -1,4 +1,4 @@
-<footer class="fixed-bottom bg-primary text-white text-center py-3">
+<footer class="fixed-bottom bg-primary text-white text-center py-2">
     <div class="container">
         {% if site_footer %}
             <div class="mb-1">
@@ -8,7 +8,7 @@
             {% if site_footer.contact_link %}
                 <p class="mb-0">
                     <a href="{{ site_footer.contact_link }}" class="text-white text-decoration-underline">
-                        {{ site_footer.contact_text|default:"Contact" }}
+                        {{ site_footer.contact_text|default:"The Youth Vineyard" }}
                     </a>
                 </p>
             {% endif %}

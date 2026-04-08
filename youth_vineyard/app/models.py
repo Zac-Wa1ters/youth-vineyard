@@ -166,6 +166,13 @@ class GalleryVideoPage(Orderable):
 
 class EventPage(Page): 
     
+    event_image = models.ForeignKey(
+                                "wagtailimages.Image",
+                                null=True,
+                                blank=True,
+                                on_delete=models.SET_NULL,
+                                related_name="+",
+                                )
     sku = models.CharField(max_length=255, blank=True, null=True)
     event_date = models.DateField()
     event_time = models.TimeField()
@@ -176,6 +183,7 @@ class EventPage(Page):
         help_text="Check if this event takes place in the Quad Cities. Leave unchecked for Water Valley.")
 
     content_panels = Page.content_panels + [
+        FieldPanel("event_image"),
         FieldPanel("sku"),
         FieldPanel("event_date"),
         FieldPanel("event_time"),

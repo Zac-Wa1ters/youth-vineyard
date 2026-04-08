@@ -1,14 +1,17 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<nav class="navbar">
-    <div class="nav-container">
+<nav class="navbar navbar-expand-lg bg-primary sticky-top py-3 px-4">
+    <div class="container" style="max-width: 1200px;">
 
-        <a class="brand" href="/">
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="/">
             {% if site_branding and site_branding.logo %}
                 {% image site_branding.logo fill-60x60 as logo_img %}
-                <img src="{{ logo_img.url }}" alt="{{ site_branding.organization_name }}" class="logo">
+                <img src="{{ logo_img.url }}"
+                     alt="{{ site_branding.organization_name }}"
+                     class="rounded"
+                     style="height: 40px; width: auto;">
             {% endif %}
-            <span class="brand-name">
+            <span>
                 {% if site_branding %}
                     {{ site_branding.organization_name }}
                 {% else %}
@@ -17,26 +20,42 @@
             </span>
         </a>
 
-        <ul class="nav-links">
-            {% for menu_page in page.get_site.root_page.get_children.live.in_menu.specific %}
-                <li>
-                    <a href="{% pageurl menu_page %}">{{ menu_page.title }}</a>
+        <button class="navbar-toggler border-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center">
+
+                {% for menu_page in page.get_site.root_page.get_children.live.in_menu.specific %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% pageurl menu_page %}">
+                            {{ menu_page.title }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li class="nav-item">
+                        <span class="nav-link text-white">No menu pages found</span>
+                    </li>
+                {% endfor %}
+
+                <li class="nav-item ms-lg-3">
+                    <a href="#" class="nav-link text-white snipcart-checkout d-flex align-items-center gap-1">
+                        <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" fill="currentColor">
+                            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                        (<span class="snipcart-items-count">0</span> items)
+                    </a>
                 </li>
-            {% empty %}
-                <li>No menu pages found</li>
-            {% endfor %}
-            <a href="#" class="snipcart-checkout">
-           
-                    <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="currentColor">
-                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                    </svg>
-           
-                (<span class="snipcart-items-count">0</span> items)
-            </a>
-        </ul>
 
-
-
+            </ul>
+        </div>
 
     </div>
 </nav>

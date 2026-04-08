@@ -13,7 +13,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 {% if settings.app.SnipcartSettings.api_key %}
 <script>
@@ -28,7 +28,7 @@ window.SnipcartSettings = {
 <div id="snipcart" hidden></div>
 {% endif %}
 
-<main>
+<main class="flex-grow-1 pb-4">
     {% wagtailuserbar %}
     {% include "includes/navbar.html" %}
     {% block content %}{% endblock %}

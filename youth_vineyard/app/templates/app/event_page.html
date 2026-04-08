@@ -1,65 +1,83 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailimages_tags wagtailcore_tags %}
 
 {% block content %}
-
 <div class="event-page">
-
-    <div class="text-start mt-4 ms-3">
-        <a href="{{ page.get_parent.url }}" class="btn btn-outline-primary">
-            ← Back to All Events
-        </a>
-    </div>
-
-    <h1>{{ page.title }}</h1>
-
-    <p><strong>Date:</strong> {{ page.event_date }}</p>
-    <p><strong>Time:</strong> {{ page.event_time }}</p>
-    <p><strong>Venue:</strong> {{ page.venue_name }}</p>
-
-    <div>
-        {{ page.event_description|richtext }}
-    </div>
-    
-    <hr>
-
-    <h2>Tickets</h2>
-
-    {% if page.ticket_types.all %}
-
-        {% for ticket in page.ticket_types.all %}
-
-            {% if ticket.tickets_available > 0 %}
-
-                <button
-                    class="snipcart-add-item btn btn-primary"
-                    data-item-id="{{ ticket.sku }}"
-                    data-item-name="{{ page.title }} - {{ ticket.name }}"
-                    data-item-price="{{ ticket.price }}"
-                    data-item-url="{{ page.full_url }}"
-                    data-item-shippable="false"
-                    data-item-description="{{ page.title }} {{ ticket.name }}"
-                    data-item-max-quantity="{{ ticket.tickets_available }}"
-                >
-                    Buy {{ ticket.name }} - ${{ ticket.price }}
-                </button>
-
-                <hr>
-
-            {% else %}
-
-                <p><strong>{{ ticket.name }}</strong> — Sold Out</p>
-
-            {% endif %}
-
-        {% empty %}
-
-            <p>No tickets are currently available for this event.</p>
-
-        {% endfor %}
-
-    {% endif %}
-
+<div class="container py-4">
+<div class="text-start mt-4 ms-3 mb-3">
+    <a href="{{ page.get_parent.url }}" class="btn btn-outline-primary px-4 py-2">
+        ← Back to All Events
+    </a>
 </div>
 
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            {% if page.event_image %}
+                {% image page.event_image width-400 as event_img %}
+                <img src="{{ event_img.url }}"
+                     alt="{{ page.title }}"
+                     class="img-fluid rounded shadow-sm"
+                     style="max-width: 400px; width: 100%;">
+            {% endif %}
+        </div>
+
+        <div class="col-md-6">
+
+            <h1 class="h2 mb-2">{{ page.title }}</h1>
+
+            <ul class="list-unstyled mb-4">
+                <li class="mb-1"><strong>Date:</strong> {{ page.event_date }}</li>
+                <li class="mb-1"><strong>Time:</strong> {{ page.event_time }}</li>
+                <li class="mb-1"><strong>Venue:</strong> {{ page.venue_name }}</li>
+            </ul>
+
+            <div class="mb-4">
+                {{ page.event_description|richtext }}
+            </div>
+
+            <hr class="mb-4">
+
+            <h2 class="h5 mb-3">Tickets</h2>
+
+            <div class="row g-3">
+                {% for ticket in page.ticket_types.all %}
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+
+                                <div>
+                                    <h5 class="card-title mb-1">{{ ticket.name }}</h5>
+                                    <p class="card-text text-primary fw-semibold fs-5 mb-0">${{ ticket.price }}</p>
+                                </div>
+
+                                {% if ticket.tickets_available > 0 %}
+                                    <button
+                                        class="snipcart-add-item btn btn-primary"
+                                        data-item-id="{{ ticket.sku }}"
+                                        data-item-name="{{ page.title }} - {{ ticket.name }}"
+                                        data-item-price="{{ ticket.price }}"
+                                        data-item-url="{{ page.full_url }}"
+                                        data-item-shippable="false"
+                                        data-item-description="{{ page.title }} {{ ticket.name }}"
+                                        data-item-max-quantity="{{ ticket.tickets_available }}"
+                                    >
+                                        Buy Ticket
+                                    </button>
+                                {% else %}
+                                    <span class="badge bg-secondary">Sold Out</span>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p class="text-muted">No tickets are currently available for this event.</p>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
 {% endblock %}

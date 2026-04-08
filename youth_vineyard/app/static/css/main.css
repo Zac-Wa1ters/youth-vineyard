@@ -30,7 +30,7 @@ html {
 
 
 
-/* ========================
+/* ========================pyth
    NAVBAR
    ======================== */
 
@@ -168,7 +168,7 @@ html {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     margin-bottom: 2rem;
 }
 
@@ -188,6 +188,7 @@ html {
 .more-info-section {
     padding: 3rem 0;
     background: #faf9f6;
+    
 }
 
 .more-info-content {
@@ -197,11 +198,12 @@ html {
     max-width: 1100px;
     margin: 0 auto;
     flex-wrap: wrap;
+   
 }
 
 .more-info-text {
     flex: 1 1 320px;
-    text-align: left;
+    text-align: center;
     color:#7C0A02
 }
 
@@ -211,10 +213,12 @@ html {
     font-family: Palatino, "Palatino Linotype", Georgia, serif;
     font-size: 1rem;
     line-height: 1.8;
+    text-align: center;
 }
 
 .more-info-image-wrap {
     flex: 1 1 320px;
+    padding: 3rem;
 }
 
 .more-info-image {
@@ -235,7 +239,7 @@ html {
 }
 
 .button-wrap.left-align {
-    text-align: left;
+    text-align: center;
 }
 
 .page-button {

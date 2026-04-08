@@ -4,25 +4,26 @@
 {% block content %}
 <div class="event-page">
 <div class="container py-4">
-<div class="text-start mt-4 ms-3 mb-3">
-    <a href="{{ page.get_parent.url }}" class="btn btn-outline-primary px-4 py-2">
-        ← Back to All Events
-    </a>
-</div>
 
-    <div class="row g-4">
+    <div class="text-start mt-4 ms-3 mb-3">
+        <a href="{{ page.get_parent.url }}" class="btn btn-outline-primary px-4 py-2">
+            ← Back to All Events
+        </a>
+    </div>
 
+    <div class="row g-4 {% if not page.event_image %}justify-content-center{% endif %}">
+
+        {% if page.event_image %}
         <div class="col-md-6">
-            {% if page.event_image %}
-                {% image page.event_image width-400 as event_img %}
-                <img src="{{ event_img.url }}"
-                     alt="{{ page.title }}"
-                     class="img-fluid rounded shadow-sm"
-                     style="max-width: 400px; width: 100%;">
-            {% endif %}
+            {% image page.event_image width-400 as event_img %}
+            <img src="{{ event_img.url }}"
+                 alt="{{ page.title }}"
+                 class="img-fluid rounded shadow-sm"
+                 style="max-width: 400px; width: 100%;">
         </div>
+        {% endif %}
 
-        <div class="col-md-6">
+        <div class="{% if page.event_image %}col-md-6{% else %}col-md-8 col-lg-6{% endif %}">
 
             <h1 class="h2 mb-2">{{ page.title }}</h1>
 

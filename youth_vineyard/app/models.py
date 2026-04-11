@@ -254,6 +254,7 @@ class LandingPage(Page):
     
     title_text = models.CharField(max_length=250, blank=True)
     quote = models.CharField(max_length=250, blank=True)
+    opening_text = RichTextField(blank=True)
     main_image = models.ForeignKey(
                                 "wagtailimages.Image",
                                 null=True,
@@ -298,6 +299,7 @@ class LandingPage(Page):
             FieldPanel("title_text"),
             FieldPanel("quote"),
             FieldPanel("main_image"),
+            FieldPanel("opening_text"),
         ], heading="Title section"),
         MultiFieldPanel([
             FieldPanel("gallery_button_text"),

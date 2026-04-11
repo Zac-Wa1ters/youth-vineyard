@@ -66,7 +66,7 @@ html {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 70px;
     margin: 0;
     padding: 0;
     background: var(--bs-primary);
@@ -89,11 +89,8 @@ html {
     display: flex;
     align-items: center;
     height: 100%;
+    padding: 0 40px;
 }
-
-
-
-
 
 
 
@@ -101,7 +98,14 @@ html {
    LANDING PAGE
    ======================== */
 
+.landing-page h1,
+.landing-page h2 {
+    border-bottom: none;
+}
 
+.landing-title {
+    font-family: 'Lora', serif;
+}
 
  .landing-page {
     font-family: Palatino, "Palatino Linotype", Georgia, serif;
@@ -112,6 +116,12 @@ html {
 }
 
 
+.landing-page .col-md-6 .lead .rich-text p {
+    font-size: 1.2rem;
+    max-width: 480px;
+    line-height: 1.8;
+}
+
 .title-section {
     text-align: center;
     margin-bottom: 3rem;
@@ -120,7 +130,7 @@ html {
 
 .landing-title {
     font-size: 3rem;
-    font-weight: normal;         /* new — lets Palatino breathe */
+    font-weight: normal;     
     margin-bottom: 1rem;
     color: var(--bs-primary);
 } 
@@ -131,22 +141,23 @@ html {
     font-style: italic;
     margin-bottom: 2rem;
     color: var(--bs-primary);
-    max-width: 600px;            /* new — keeps long quotes readable */
+    max-width: 600px;           
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.6;            /* new */
+    line-height: 1.6;            
 }
 
 
 .main-image {
-    width: 70%;           /* pulls it in from both sides */
-    height: auto;
+    width: 50%;         
+    height: 400px;
     display: block;
     border-radius: 12px;
-    max-height: 450px;    /* stretch it taller */
     object-fit: cover;
-    margin: 0 auto;       /* keeps it centered after narrowing */
+    margin: 0 auto;     
 }
+
+=
 
 /* ================================
    GALLERY / PREVIEW SECTION — new
@@ -271,6 +282,8 @@ html {
    ABOUT PAGE
    ================================ */
 
+
+
 .hero {
     position: relative;
     text-align: center;
@@ -280,8 +293,9 @@ html {
 .hero h1 {
     font-size: clamp(1.75rem, 4vw, 3rem);
     font-weight: normal;
-    color: var(--bs-primary);
+    color: #000000;
     margin-bottom: 1rem;
+    border-bottom: none;
 }
 
 .hero img {
@@ -363,7 +377,7 @@ section button:hover {
 }
 
 .gallery-index-page{
-    color: var(--bs-primary);
+    color: #000000;
 }
 
 
@@ -434,7 +448,7 @@ color: white;
    ======================== */
 
 .event-index-page {
-  color: var(--bs-primary);
+  color: #000000;
 }
 
 .event-page {
@@ -507,7 +521,12 @@ color: white;
    KEYNOTE
    ======================== */
 
+.keynote h1{
+    
+    border-bottom: none;
+    margin: 2rem;
 
+}
 
 
 .keynote{

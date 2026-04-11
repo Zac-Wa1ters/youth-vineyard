@@ -169,6 +169,8 @@ class GalleryVideoPage(Orderable):
     
 
 class EventPage(Page): 
+
+    parent_page_types = ["app.EventIndexPage"]
     
     event_image = models.ForeignKey(
                                 "wagtailimages.Image",
@@ -228,7 +230,7 @@ class EventTicketType(Orderable):
             
 
 class EventIndexPage(Page): #This loops through EventPage and gets all the info to render on the Box Office Page. 
-    
+   subpage_types = ["app.EventPage"]
    def get_context(self, request):
     context = super().get_context(request)
 

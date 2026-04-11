@@ -4,13 +4,13 @@
 
 
 :root {
-    --bs-primary: #374937;
-    --bs-primary-rgb: 142, 155, 187;  
+    --bs-primary: #e74c3c;
+    --bs-primary-rgb: 231, 76, 60;  
     --bs-body-font-family: Palatino, "Palatino Linotype", Georgia, serif;
     --bs-font-sans-serif: Palatino, "Palatino Linotype", Georgia, serif;
-    --bs-body-color: #374937
-    --bs-btn-active-bg: #374937
-    --bs-btn-active-border-color: #374937;
+    --bs-body-color: #e74c3c
+    --bs-btn-active-bg: #e74c3c
+    --bs-btn-active-border-color: #e74c3c;
 }
 body {
     font-family: Palatino, "Palatino Linotype", Georgia, serif;

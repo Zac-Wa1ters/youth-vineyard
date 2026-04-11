@@ -34,9 +34,24 @@
 
 <section>
     <h1>How You Can Help</h1>
-    {{ page.donate|richtext}}
+    {{ page.donate_text|richtext}}
 
-    <button type="button">Donate</button>
+    {% if page.donate_cashapp %}
+        <div class="button-wrap left-align">
+            <a href="{{ page.donate_cashapp }}" class="page-button">
+                CashApp
+            </a>
+        </div>
+    {% endif %}
+        {% if page.donate_venmo %}
+        <div class="button-wrap left-align">
+            <a href="{{ page.donate_venmo }}" class="page-button">
+                Venmo
+            </a>
+        </div>
+    {% endif %}
+
+
 </section>
 
 

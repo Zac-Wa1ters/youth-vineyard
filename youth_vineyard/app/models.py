@@ -69,7 +69,9 @@ class AboutPage(Page):
     founder_bio = RichTextField()
     mission_statement = RichTextField()
     mentalhealth_services = RichTextField()
-    donate = RichTextField(blank=True)
+    donate_text = RichTextField(blank=True, null=True)
+    donate_cashapp = models.URLField(max_length=1000,blank=True)
+    donate_venmo = models.URLField(max_length=1000,blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("hero_title"),
@@ -78,7 +80,9 @@ class AboutPage(Page):
         FieldPanel("founder_bio"),
         FieldPanel("mission_statement"),
         FieldPanel("mentalhealth_services"),
-        FieldPanel("donate")
+        FieldPanel("donate_text"),
+        FieldPanel("donate_cashapp"),
+        FieldPanel("donate_venmo"),
     ]
 
 
@@ -258,27 +262,6 @@ class LandingPage(Page):
     
     preview_header = models.CharField(max_length=250, blank=True)
     
-    preview_image_1 = models.ForeignKey(
-                                "wagtailimages.Image",
-                                null=True,
-                                blank=True,
-                                on_delete=models.SET_NULL,
-                                related_name="+",)
-
-    preview_image_2 = models.ForeignKey(
-                                "wagtailimages.Image",
-                                null=True,
-                                blank=True,
-                                on_delete=models.SET_NULL,
-                                related_name="+",)
-
-    preview_image_3 = models.ForeignKey(
-                                "wagtailimages.Image",
-                                null=True,
-                                blank=True,
-                                on_delete=models.SET_NULL,
-                                related_name="+",)
-    
     gallery_button_text = models.CharField(max_length=100, blank=True)
     gallery_button_link = models.ForeignKey(
         "wagtailcore.Page",
@@ -315,10 +298,6 @@ class LandingPage(Page):
             FieldPanel("main_image"),
         ], heading="Title section"),
         MultiFieldPanel([
-            FieldPanel("preview_header"),
-            FieldPanel("preview_image_1"),
-            FieldPanel("preview_image_2"),
-            FieldPanel("preview_image_3"),
             FieldPanel("gallery_button_text"),
             FieldPanel("gallery_button_link"),
         ], heading="Gallery section"),
@@ -332,6 +311,14 @@ class LandingPage(Page):
 
         
     ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+
+        gallery_index = self.get_children().type(GalleryIndexPage).first()
+        if gallery_index:
+            context['carousel_pages'] = GalleryEventPage.objects.child_of(gallery_index).live().filter(hero_image__isnull=False)
+        return context
 
 
 

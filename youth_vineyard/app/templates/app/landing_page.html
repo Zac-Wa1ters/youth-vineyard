@@ -29,22 +29,36 @@
             <h2 class="section-header">{{ page.preview_header }}</h2>
         {% endif %}
 
-        <div class="preview-row">
-            {% if page.preview_image_1 %}
-                {% image page.preview_image_1 fill-400x300 as preview1 %}
-                <img src="{{ preview1.url }}" alt="Preview image 1" class="preview-image">
-            {% endif %}
+        {% load wagtailimages_tags %}
 
-            {% if page.preview_image_2 %}
-                {% image page.preview_image_2 fill-400x300 as preview2 %}
-                <img src="{{ preview2.url }}" alt="Preview image 2" class="preview-image">
-            {% endif %}
+<div id="heroCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
 
-            {% if page.preview_image_3 %}
-                {% image page.preview_image_3 fill-400x300 as preview3 %}
-                <img src="{{ preview3.url }}" alt="Preview image 3" class="preview-image">
-            {% endif %}
-        </div>
+    <div class="carousel-inner">
+        {% for event in carousel_pages %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                {% image event.hero_image width-1200 as hero_img %}
+                <img src="{{ hero_img.url }}"
+                     class="d-block w-100"
+                     alt="{{ event.title }}"
+                     style="height: 500px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block">
+                    
+                    <a href="{{ event.url }}" class="btn btn-primary">View Gallery</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+</div>
 
         {% if page.gallery_button_text and page.gallery_button_link %}
             <div class="button-wrap">

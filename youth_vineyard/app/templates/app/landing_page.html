@@ -66,9 +66,9 @@
                     {{ page.more_info_text|richtext }}
                 {% endif %}
 
-                {% if page.info_button_text and page.info_button_link %}
+                {% if page.info_button_text and page.info_button_link.slug %}
                     <div class="button-wrap left-align">
-                        <a href="{{ page.info_button_link }}" class="page-button">
+                        <a href="{{ page.info_button_link.slug }}" class="page-button">
                             {{ page.info_button_text }}
                         </a>
                     </div>

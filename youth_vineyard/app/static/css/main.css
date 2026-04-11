@@ -4,13 +4,13 @@
 
 
 :root {
-    --bs-primary: #7C0A02;
-    --bs-primary-rgb: 124, 10, 2;  /* RGB values of #7C0A02 */
+    --bs-primary: #374937;
+    --bs-primary-rgb: 142, 155, 187;  
     --bs-body-font-family: Palatino, "Palatino Linotype", Georgia, serif;
     --bs-font-sans-serif: Palatino, "Palatino Linotype", Georgia, serif;
-    --bs-body-color: #7C0A02;
-    --bs-btn-active-bg: #5a0701;
-    --bs-btn-active-border-color: #5a0701;
+    --bs-body-color: #374937
+    --bs-btn-active-bg: #374937
+    --bs-btn-active-border-color: #374937;
 }
 body {
     font-family: Palatino, "Palatino Linotype", Georgia, serif;
@@ -20,9 +20,10 @@ body {
 
 .btn-primary:active,
 .btn-primary:focus {
-    background-color: #5a0701 !important;
-    border-color: #5a0701 !important;
+    background-color: #8E9BBB;
+    border-color: #8E9BBB;
 }
+
 html { 
     scroll-behavior: smooth; 
 }
@@ -161,14 +162,13 @@ html {
     font-weight: normal;
     margin: 0 0 2rem;
     letter-spacing: 0.02em;
-    color:#7C0A02
+    
 }
 
 .preview-row {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    /* flex-wrap: wrap; */
     margin-bottom: 2rem;
 }
 
@@ -204,7 +204,7 @@ html {
 .more-info-text {
     flex: 1 1 320px;
     text-align: center;
-    color:#7C0A02
+
 }
 
 /* Wagtail richtext specificity fix */

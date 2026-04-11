@@ -184,7 +184,7 @@ class EventPage(Page):
     event_description = RichTextField()
     is_quad_cities = models.BooleanField(
         default=False,
-        help_text="Check if this event takes place in the Quad Cities. Leave unchecked for Water Valley.")
+        help_text="Check if this event takes place in the Quad Cities. Leave unchecked for Mississippi.")
 
     content_panels = Page.content_panels + [
         FieldPanel("event_image"),
@@ -234,7 +234,7 @@ class EventIndexPage(Page): #This loops through EventPage and gets all the info 
 
     events = EventPage.objects.child_of(self).live().order_by("event_date")
 
-    region = request.GET.get("region", "water_valley")
+    region = request.GET.get("region", "mississippi")
 
     if region == "quad_cities":
         events = events.filter(is_quad_cities=True)

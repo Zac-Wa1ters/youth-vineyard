@@ -3,30 +3,28 @@
    ======================== */
 
 
+
+
 :root {
-    --bs-primary: #e74c3c;
-    --bs-primary-rgb: 231, 76, 60;  
+  --bs-primary: #7C0A02;
+  --bs-body-font-family: 'Palatino', sans-serif;
+  --bs-body-color: #F1F1F1;
+}
+
+:root {
     --bs-body-font-family: Palatino, "Palatino Linotype", Georgia, serif;
     --bs-font-sans-serif: Palatino, "Palatino Linotype", Georgia, serif;
-    --bs-body-color: #e74c3c
-    --bs-btn-active-bg: #e74c3c
-    --bs-btn-active-border-color: #e74c3c;
 }
+
 body {
     font-family: Palatino, "Palatino Linotype", Georgia, serif;
     margin: 0;
     text-align: center;
 }
 
-.btn-primary:active,
-.btn-primary:focus {
-    background-color: #8E9BBB;
-    border-color: #8E9BBB;
-}
 
-html { 
-    scroll-behavior: smooth; 
-}
+
+
 
 
 
@@ -36,10 +34,21 @@ html {
    ======================== */
 
 
+.navbar {
+    background: var(--bs-primary);
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;    /* keeps it above other content as you scroll */
+}
 
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;   /* matches your .landing-page width */
+    margin: 0 auto;      /* centers it */
+    padding: 0 2rem;
 }
 
 .brand {
@@ -66,7 +75,7 @@ html {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 70px;
+    gap: 30px;
     margin: 0;
     padding: 0;
     background: var(--bs-primary);
@@ -89,8 +98,11 @@ html {
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 40px;
 }
+
+
+
+
 
 
 
@@ -98,14 +110,7 @@ html {
    LANDING PAGE
    ======================== */
 
-.landing-page h1,
-.landing-page h2 {
-    border-bottom: none;
-}
 
-.landing-title {
-    font-family: 'Lora', serif;
-}
 
  .landing-page {
     font-family: Palatino, "Palatino Linotype", Georgia, serif;
@@ -116,12 +121,6 @@ html {
 }
 
 
-.landing-page .col-md-6 .lead .rich-text p {
-    font-size: 1.2rem;
-    max-width: 480px;
-    line-height: 1.8;
-}
-
 .title-section {
     text-align: center;
     margin-bottom: 3rem;
@@ -130,7 +129,7 @@ html {
 
 .landing-title {
     font-size: 3rem;
-    font-weight: normal;     
+    font-weight: normal;         /* new — lets Palatino breathe */
     margin-bottom: 1rem;
     color: var(--bs-primary);
 } 
@@ -141,23 +140,22 @@ html {
     font-style: italic;
     margin-bottom: 2rem;
     color: var(--bs-primary);
-    max-width: 600px;           
+    max-width: 600px;            /* new — keeps long quotes readable */
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.6;            
+    line-height: 1.6;            /* new */
 }
 
 
 .main-image {
-    width: 50%;         
-    height: 400px;
+    width: 70%;           /* pulls it in from both sides */
+    height: auto;
     display: block;
     border-radius: 12px;
+    max-height: 450px;    /* stretch it taller */
     object-fit: cover;
-    margin: 0 auto;     
+    margin: 0 auto;       /* keeps it centered after narrowing */
 }
-
-=
 
 /* ================================
    GALLERY / PREVIEW SECTION — new
@@ -173,13 +171,14 @@ html {
     font-weight: normal;
     margin: 0 0 2rem;
     letter-spacing: 0.02em;
-    
+    color:#7C0A02
 }
 
 .preview-row {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
     margin-bottom: 2rem;
 }
 
@@ -212,8 +211,8 @@ html {
 
 .more-info-text {
     flex: 1 1 320px;
-    text-align: center;
-
+    text-align: left;
+    color:#7C0A02
 }
 
 /* Wagtail richtext specificity fix */
@@ -282,8 +281,6 @@ html {
    ABOUT PAGE
    ================================ */
 
-
-
 .hero {
     position: relative;
     text-align: center;
@@ -293,9 +290,8 @@ html {
 .hero h1 {
     font-size: clamp(1.75rem, 4vw, 3rem);
     font-weight: normal;
-    color: #000000;
+    color: var(--bs-primary);
     margin-bottom: 1rem;
-    border-bottom: none;
 }
 
 .hero img {
@@ -316,7 +312,6 @@ section {
     margin: 0 auto 3rem;
     padding: 0 2rem;
     text-align: left;
-    color: var(--bs-primary) 
     
 }
 
@@ -329,6 +324,12 @@ section h1 {
     border-bottom: 1px solid var(--bs-primary);
 }
 
+.about-page section .rich-text p {
+    font-family: Palatino, "Palatino Linotype", Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--bs-primary) 
+}
 
 /* ================================
    DONATE BUTTON
@@ -376,99 +377,22 @@ section button:hover {
     margin-bottom: 1.5rem;
 }
 
-.gallery-index-page{
-    color: #000000;
-}
 
 
-/* ========================
-   GALLERY EVENT CHILD PAGE 
-   ======================== */
 
-.gallery-event-page {
-    color: var(--bs-primary);
-}
 
-.gallery-event-page .btn-outline-primary {
-border-color: var(--bs-primary);
-color: var(--bs-primary);
-background-color: transparent;
-}
-
-.gallery-event-page .btn-outline-primary:hover {
-background-color: var(--bs-primary);
-border-color: var(--bs-primary);
-color: white;
-}
-
-/* ========================
-   STORE INDEX
-   ======================== */
-
-.store-index-page{
-     color: var(--bs-primary);
-}
-
-.card-img-top {
-    width: 100%;
-    height: auto;
-}
-
-/* ========================
-   PRODUCT PAGE
-   ======================== */
-
-   .product-page{
-    color: var(--bs-primary);
-   }
-
-   .snipcart-add-item{
-    color: var(--bs-primary);
-    border-color: var(--bs-primary);
-   }
-   .snipcart-add-item.btn-primary:hover{
-    background-color: var(--bs-primary);
-    color: white;
-   }
-
-   .product-page .btn-outline-primary {
-    border-color: var(--bs-primary);
-    color: var(--bs-primary);
-    background-color: transparent;
-    }
-
-    .product-page .btn-outline-primary:hover {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
-    color: white;
-    }
 
 /* ========================
    EVENTS RELATED PAGES
    ======================== */
 
 .event-index-page {
-  color: #000000;
+  color: var(--bs-primary);
 }
 
 .event-page {
   color: var(--bs-primary);
 }
-
-.event-page .btn-outline-primary {
-    border-color: var(--bs-primary);
-    color: var(--bs-primary);
-    background-color: transparent;
-}
-
-.event-page .btn-outline-primary:hover {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
-    color: white;
-}
-
-
-
 
 .region-toggle {
   margin-bottom: 1rem;
@@ -506,13 +430,6 @@ color: white;
 
 .card {
     color: var(--bs-primary);
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* add these two */
-    cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -521,12 +438,6 @@ color: white;
    KEYNOTE
    ======================== */
 
-.keynote h1{
-    
-    border-bottom: none;
-    margin: 2rem;
-
-}
 
 
 .keynote{
@@ -535,7 +446,22 @@ color: white;
 
 
 
+/* ========================
+   FOOTER
+   ======================== */
 
+
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--bs-primary);
+    color: white;
+}
+
+.site-footer a {
+    color: #fff;
+    text-decoration: underline;
+}
 
 
 
@@ -559,4 +485,3 @@ color: white;
         text-align: center;
     }
 }
-

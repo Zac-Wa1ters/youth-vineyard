@@ -1,1 +1,0 @@
-web: gunicorn youth_vineyard.config.wsgi --log-file -

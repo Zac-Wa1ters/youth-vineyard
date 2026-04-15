@@ -1,1 +1,1 @@
-web: gunicorn app.wsgi --log-file -
+web: gunicorn youth_vineyard.config.wsgi --log-file -

@@ -4,8 +4,17 @@
 {% block content %}
 
 <div class="event-index-page text-center">
-    <div class="btn-group region-toggle mb-3 mt-3">
-        <a href="?region=water_valley"
+
+    <h1>
+        {% if active_region == "quad_cities" %}
+            Quad Cities Events
+        {% else %}
+            Mississippi Events
+        {% endif %}
+    </h1>
+
+     <div class="btn-group region-toggle mb-3 mt-3">
+        <a href="?region=mississippi"
            class="btn btn-outline-primary {% if active_region == 'mississippi' %}active{% endif %}">
             Mississippi
         </a>
@@ -15,15 +24,7 @@
         </a>
     </div>
 
-    <h2>
-        {% if active_region == "quad_cities" %}
-            Quad Cities Events
-        {% else %}
-            Mississippi Events
-        {% endif %}
-    </h2>
-
-    <div class="row justify-content-center">
+    <div class="row justify-content-center gy-5">
         {% for event in events %}
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card mb-3 h-100 shadow-sm">

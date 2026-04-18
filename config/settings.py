@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-2m%zb5_)+junnqznk==w!4*$b62d4k%@4q3n9)yi7j5!ovms0w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com' 'theyouthvineyard.org']
 
 
 # Application definition
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'wagtail',
     'modelcluster',
     'taggit',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -133,8 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 STATIC_URL = 'static/'
 
@@ -153,8 +154,20 @@ CSRF_TRUSTED_ORIGINS = [
     "https://nondilatable-overmournfully-shawana.ngrok-free.dev",
 ]
 
+# AWS Settings
+AWS_STORAGE_BUCKET_NAME = 'youth-vineyard-media'
+AWS_S3_REGION_NAME = 'us-east-1' 
+AWS_S3_FILE_OVERWRITE = False
 
+# This builds the correct URL: https://amazonaws.com
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
 
-
-
-
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}

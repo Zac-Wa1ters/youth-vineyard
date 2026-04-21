@@ -499,10 +499,12 @@ color: white;
     color: white;
     }
 
-    .snipcart-empty-cart {
-        
-        align-items: center;
-    }
+.snipcart-empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* ========================
    EVENTS RELATED PAGES

@@ -501,12 +501,12 @@ color: white;
 
 .snipcart-modal__container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: right;
+  align-items: right;
 }
 
 .snipcart-empty-cart {
-  text-align: center;
+  text-align: right;
 }
 
 /* ========================

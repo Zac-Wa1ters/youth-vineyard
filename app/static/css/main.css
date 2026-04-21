@@ -499,14 +499,14 @@ color: white;
     color: white;
     }
 
-.snipcart-modal__container {
+.snipcart-layout__content .snipcart-modal__container {
   display: flex;
-  justify-content: right;
-  align-items: right;
+  justify-content: center;
+  align-items: center;
 }
 
 .snipcart-empty-cart {
-  text-align: right;
+  text-align: center;
 }
 
 /* ========================

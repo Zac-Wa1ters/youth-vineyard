@@ -5,30 +5,31 @@
 <div class="landing-page">
 
     <section class="title-section">
-        {% if page.title_text %}
-            <h1 class="landing-title">{{ page.title_text }}</h1>
-        {% else %}
-            <h1 class="landing-title">{{ page.title }}</h1>
-        {% endif %}
+    {% if page.main_image %}
+        {% image page.main_image fill-800x600 as main_img %}
 
-        {% if page.quote %}
-            <p class="landing-quote">{{ page.quote }}</p>
-        {% endif %}
+    
+    <div class="opening-row">
+        <div class="opening-text">
+            {% if page.title_text %}
+                <h1 class="landing-title">{{ page.title_text }}</h1>
+            {% else %}
+                <h1 class="landing-title">{{ page.title }}</h1>
+            {% endif %}
+                {% if page.quote %}
+                <p class="landing-quote">{{ page.quote }}</p>
+            {% endif %}
+            <div class="lead">{{ page.opening_text|richtext }}</div>
+        </div>
+        <img src="{{ main_img.url }}" 
+            alt="{{ page.title_text|default:page.title }}" 
+            class="main-image">
+    </div>
 
-        {% if page.main_image %}
-            {% image page.main_image fill-800x600 as main_img %}
-            <div class="opening-row">
-                <div class="opening-text">
-                    <div class="lead">{{ page.opening_text|richtext }}</div>
-                </div>
-                <img src="{{ main_img.url }}" 
-                    alt="{{ page.title_text|default:page.title }}" 
-                    class="main-image">
-             </div>
-        {% endif %}
 
-        
-    </section>
+
+    {% endif %}
+</section>
 
     <section class="gallery-section">
         {% if page.preview_header %}

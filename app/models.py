@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 from modelcluster.fields import ParentalKey
 
@@ -192,7 +193,7 @@ class EventPage(Page):
         FieldPanel("event_image"),
         FieldPanel("sku"),
         FieldPanel("event_date"),
-        FieldPanel("event_time"),
+        FieldPanel("event_time", ),
         FieldPanel("venue_name"),
         FieldPanel("event_description"),
         FieldPanel("is_quad_cities", heading="Region"),

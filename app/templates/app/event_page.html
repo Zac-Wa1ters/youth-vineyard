@@ -25,19 +25,22 @@
 
         <div class="{% if page.event_image %}col-md-6{% else %}col-md-8 col-lg-6{% endif %}">
 
-            <h1 class="h2 mb-2">{{ page.title }}</h1>
+            <div class ="card-blue-text">
+                <h1 class="h2 mb-2">{{ page.title }}</h1>
 
-            <ul class="list-unstyled mb-4">
-                <li class="mb-1"><strong>Date:</strong> {{ page.event_date }}</li>
-                <li class="mb-1"><strong>Time:</strong> {{ page.event_time }}</li>
-                <li class="mb-1"><strong>Venue:</strong> {{ page.venue_name }}</li>
-            </ul>
+                <ul class="list-unstyled mb-4">
+                    <li class="mb-1"><strong>Date:</strong> {{ page.event_date }}</li>
+                    <li class="mb-1"><strong>Time:</strong> {{ page.event_time}}</li>
+                    <li class="mb-1"><strong>Venue:</strong> {{ page.venue_name }}</li>
+                </ul>
 
-            <div class="mb-4">
-                {{ page.event_description|richtext }}
+                <div class="mb-4">
+                    {{ page.event_description|richtext }}
+                </div>
+                <hr class="mb-4">
             </div>
 
-            <hr class="mb-4">
+            
 
             <h2 class="h5 mb-3">Tickets</h2>
 

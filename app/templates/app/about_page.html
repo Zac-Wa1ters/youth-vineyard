@@ -12,7 +12,7 @@
 </section>
 
 <section>
-    <h1>About the Organization</h1>
+    <h1>What is Youth Vineyard?</h1>
     {{ page.organization_story|richtext }}
 </section>
 
@@ -22,13 +22,13 @@
 </section>
 
 <section>
-    <h1>Mission</h1>
+    <h1>Our Mission</h1>
     {{ page.mission_statement|richtext}}
 </section>
 
 
 <section>
-    <h1>Mental Health Service</h1>
+    <h1>Mental Health Services</h1>
     {{ page.mentalhealth_services|richtext}}
 </section>
 
@@ -36,24 +36,17 @@
     <h1>How You Can Help</h1>
     {{ page.donate_text|richtext}}
 
-    {% if page.donate_cashapp %}
-        <div class="button-wrap left-align">
-            <a href="{{ page.donate_cashapp }}" class="page-button">
-                CashApp
-            </a>
-        </div>
-    {% endif %}
+    <div class="donate-buttons">
+        {% if page.donate_cashapp %}
+                <a href="{{ page.donate_cashapp }}" class="page-button">CashApp</a>
+        {% endif %}
         {% if page.donate_venmo %}
-        <div class="button-wrap left-align">
-            <a href="{{ page.donate_venmo }}" class="page-button">
-                Venmo
-            </a>
-        </div>
-    {% endif %}
-
+                <a href="{{ page.donate_venmo }}" class="page-button">Venmo</a>
+        {% endif %}
+    </div>
 
 </section>
-</div>
+
 
 
 {% endblock %}

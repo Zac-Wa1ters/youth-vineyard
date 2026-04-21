@@ -131,6 +131,10 @@ USE_I18N = True
 USE_TZ = True
 
 
+# WAGTAIL_TIME_FORMAT = '%I:%M %p'
+TIME_INPUT_FORMATS = ['%I:%M %p']
+WAGTAIL_DATETIME_FORMAT = '%d.%m.%Y. %H:%M %p'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

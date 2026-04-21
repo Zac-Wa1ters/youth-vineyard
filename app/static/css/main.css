@@ -6,25 +6,30 @@
 
 
 :root {
-  --bs-primary: #7C0A02;
+  --bs-primary: #e74c3c;
+  --bs-primary-rgb: 231, 76, 60;
   --bs-body-font-family: 'Palatino', sans-serif;
   --bs-body-color: #F1F1F1;
 }
 
 :root {
-    --bs-body-font-family: Palatino, "Palatino Linotype", Georgia, serif;
-    --bs-font-sans-serif: Palatino, "Palatino Linotype", Georgia, serif;
+    --bs-body-font-family: Arial, Helvetica, sans-serif;
+    --bs-font-sans-serif:  Arial, Helvetica, sans-serif;;
     --accent-color: #545E75;
-    --bs-body-color: #545E75
-    --bs-btn-active-bg: #545E75
-    --bs-btn-active-border-color: #545E75
+    --bs-body-color: #545E75;
+    --bs-btn-active-bg: #545E75;
+    --bs-btn-active-border-color: #545E75;
 }
 
 body {
-    font-family: Palatino, "Palatino Linotype", Georgia, serif;
+    font-family:Arial, Helvetica, sans-serif;
     margin: 0;
     text-align: center;
     color: var(--accent-color);
+}
+
+body h1 {
+    font-family:Georgia, serif;
 }
 
 .btn-primary:active,
@@ -99,6 +104,13 @@ html {
 
 
 
+.navbar .nav-link.active {
+  font-weight: 600;
+  border-bottom: 2px solid white;
+  
+}
+
+
 
 
 
@@ -106,16 +118,24 @@ html {
    LANDING PAGE
    ======================== */
 
+ .landing-page {
+    font-family: Palatino, "Palatino Linotype", Georgia, serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+   
+    align-self: stretch;
+    display: block;
+   
+}
+
 
 .landing-title {
     margin-top: 2rem;
     font-family: 'Lora', serif;
 }
 
- .landing-page {
-    font-family: Palatino, "Palatino Linotype", Georgia, serif;
-    text-align: center;
-}
 
 
 .landing-page div.lead > p  {
@@ -124,49 +144,62 @@ html {
 }
 
 
-
-
-
-
-.opening-row {
-    display: flex;
-    align-items: center;
-    gap: 6rem;
-    padding: 0 0.5rem;
-    width: calc(100% + 1rem); /* 0.5rem + 0.5rem */
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-}
-
-.opening-text {
-    flex: 2;
-    text-align: left;
-    min-width: 0;
-}
-
-.main-image {
-    flex: 2;
+.landing-page .title-section {
+    padding: 0;
+    margin: 0;
     width: 100%;
-    object-fit: cover;
+    max-width: 100%;
+}
+
+
+.landing-page .opening-row {
+    display: flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    width: 100%;
+}
+
+.landing-page .main-image {
+    flex: 1 1 0;
     min-width: 0;
-    
+    min-height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+.landing-page .opening-text {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 2rem 3rem;
+    text-align: center;
+   
+}
+
+main {
+    width: 100%;
 }
 
 
 .title-section {
+    width: 100%;
+    margin: 0;
     text-align: center;
-    margin-bottom: 3rem;
-    padding: 0 0.5rem;
-}
+    margin-bottom: 2rem;
+    padding: 0;
+    margin-left: 0 !important;
+} 
 
 
+/*CHANGE LANDING PAGE TITLE HERE*/
 
 .landing-title {
     font-size: 3rem;
-    font-weight: normal;         /* new — lets Palatino breathe */
+    font-weight: normal;        
     margin-bottom: 1rem;
     color: var(--bs-primary);
-    font-family:'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family:Georgia, serif;
+
+    border-bottom: none;
 } 
 
 
@@ -175,10 +208,8 @@ html {
     font-style: italic;
     margin-bottom: 2rem;
     color: var(--bs-primary);
-    max-width: 600px;            /* new — keeps long quotes readable */
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;            /* new */
+    max-width: 600px;           
+    line-height: 1.6;       
 }
 
 
@@ -196,7 +227,6 @@ html {
     font-weight: normal;
     margin: 0 0 2rem;
     letter-spacing: 0.02em;
-    color:#7C0A02
 }
 
 .preview-row {
@@ -236,7 +266,6 @@ html {
 
 .more-info-text {
     text-align: left;
-
 }
 
 
@@ -259,10 +288,6 @@ html {
 .button-wrap {
     margin-top: 1.5rem;
     text-align: center;
-}
-
-.button-wrap.left-align {
-    text-align: left;
 }
 
 .page-button {
@@ -322,6 +347,19 @@ html {
     margin: 0 auto;
 }
 
+
+
+.donate-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.donate-buttons .page-button {
+    width: 140px;        
+    text-align: center;  
+}
+
 /* ================================
    CONTENT SECTIONS
    ================================ */
@@ -350,6 +388,13 @@ section h1 {
     color: var(--bs-primary) 
 }
 
+.about-page section {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+    text-align: left;
+}
+
 /* ================================
    DONATE BUTTON
    ================================ */
@@ -371,12 +416,6 @@ section button:hover {
     background: var(--bs-primary);
     color: #fff;
 }
-
-
-
-   
-
-
 
 
 
@@ -490,6 +529,9 @@ color: white;
     color: white;
 }
 
+.blue-text * {
+    color: var(--bs-btn-active-bg);
+}
 
 
 .region-toggle {
@@ -530,6 +572,8 @@ color: white;
     color: var(--bs-primary);
     transition: transform 0.2s ease, box-shadow 0.2s ease; 
     cursor: pointer;
+    box-shadow: -4px -4px 0px rgba(84, 94, 117, 0.5) !important;
+
 }
 
 .card:hover {
@@ -541,6 +585,10 @@ color: white;
     width: 100%;
     height: 220px;
     object-fit: cover;
+}
+
+.card-blue-text *{
+    color: var(--bs-btn-active-bg);
 }
 
 
@@ -561,7 +609,7 @@ color: white;
 }
 
 .keynote{
-    color: var(--bs-primary);
+    color: var(--bs-primary-rgb);
 }
 
 
@@ -576,11 +624,17 @@ color: white;
     padding: 20px;
     background: var(--bs-primary);
     color: white;
+    
 }
 
 .site-footer a {
     color: #fff;
     text-decoration: underline;
+  
+}
+
+.fixed-bottom.bg-primary {
+    font-family: Georgia, serif;
 }
 
 

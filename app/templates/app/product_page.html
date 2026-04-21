@@ -55,12 +55,6 @@
                     class="btn btn-primary w-100 snipcart-add-item"
                     data-item-id="{{ page.sku }}"
                     data-item-name="{{ page.title }}"
-
-                    {% for f in custom_fields %}
-                        data-item-custom{{ forloop.counter }}-name="{{ f.name }}"
-                        data-item-custom{{ forloop.counter }}-options="{{ f.options }}"
-                    {% endfor %}
-
                     data-item-price="{{ page.price }}"
                     data-item-url="{{ request.path }}">
                     Add to Cart

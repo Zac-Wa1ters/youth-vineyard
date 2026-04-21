@@ -33,9 +33,16 @@
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center">
 
+            <li class= "nav-item">
+                <a class= "nav-link text-white px-4 {% if request.path == '/' %}active{% endif %}" href="/">
+                Home
+                </a>
+            </li>
+
                 {% for menu_page in page.get_site.root_page.get_children.live.in_menu.specific %}
                     <li class="nav-item">
-                        <a class="nav-link text-white px-4" href="{% pageurl menu_page %}">
+                        <a class="nav-link text-white px-4 {% if request.path == menu_page.url %}active{% endif %}"
+                        href="{% pageurl menu_page %}">
                             {{ menu_page.title }}
                         </a>
                     </li>

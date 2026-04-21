@@ -499,13 +499,14 @@ color: white;
     color: white;
     }
 
+.snipcart-modal__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .snipcart-empty-cart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 300px; /* adjust as needed */
+  text-align: center;
 }
 
 /* ========================

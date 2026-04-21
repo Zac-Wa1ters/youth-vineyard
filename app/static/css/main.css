@@ -499,6 +499,11 @@ color: white;
     color: white;
     }
 
+    .snipcart-empty-cart {
+        display: flex;
+        align-items: center;
+    }
+
 /* ========================
    EVENTS RELATED PAGES
    ======================== */

@@ -13,7 +13,7 @@
             <div class="card h-100 shadow-sm">
 
                 {% if product.product_image %}
-                    {% image product.product_image width-400 as product_img %}
+                    {% image product.product_image width-400 height-400 as product_img %}
                     <img src="{{ product_img.url }}"
                          class="card-img-top"
                          alt="{{ product.title }}">

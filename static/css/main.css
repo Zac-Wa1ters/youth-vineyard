@@ -177,35 +177,6 @@ main {
 
 
 
-/*
-.opening-text {
-    flex: 1;
-    text-align: center;
-    max-width: 500px;
-    padding: 2rem 3rem;
-}
-
-
-.landing-page .opening-row {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    width: 100%;
-    justify-content: center;
-    padding: 0;
-    align-items: center;
-    text-align: center;
-}
-
-
-.landing-page .main-image {
-    flex: 1;
-    min-height: 400px;
-    object-fit: cover;
-    display: block;
-} */
-
-
 .title-section {
     width: 100%;
     margin: 0;

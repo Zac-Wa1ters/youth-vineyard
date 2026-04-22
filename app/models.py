@@ -86,8 +86,6 @@ class AboutPage(Page):
         FieldPanel("donate_venmo"),
     ]
 
-
-
 class KeynotePage(Page): 
 
     hero_title= models.CharField(max_length=255)
@@ -107,6 +105,11 @@ class KeynotePage(Page):
         FieldPanel("keynote_speaking")
     ]
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        contact_page = ContactPage.objects.live().first()
+        context['contact_email'] = contact_page.email if contact_page else None
+        return context
 
 class GalleryIndexPage(Page): #for rendering the entire gallery in a grid 
     template = "app/gallery_index_page.html"
@@ -425,3 +428,11 @@ class ContactPage(Page):
 
     class Meta:
         verbose_name = "Contact Page"
+
+
+
+
+
+
+
+       

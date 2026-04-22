@@ -56,30 +56,6 @@
   {% endif %}
 
 
-{% comment %} added  {% endcomment %}
-  {% for gallery_image in page.gallery_images.all %}
-    {% if gallery_image.image %}
-    <img
-      src="{% image gallery_images.image width-400 %}"
-      class="galley-thumb"
-      data-bs-toggle="modal"
-      data-bs-target="#galleryModal"
-      data-full="{% image gallery_image.image original %}"
-    />
-    {% endif %}
-  {% endfor %}
-
-
-  <div class="modal fade" id="galleryModal" tabindex="-1">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content bg-transparent border-0">
-      <img id="modal-img" src="" class="img-fluid" alt="">
-    </div>
-  </div>
-</div>
-
-{% comment %} added  {% endcomment %}
-
 
   {% if page.gallery_videos.all %}
     <div class="mb-5">

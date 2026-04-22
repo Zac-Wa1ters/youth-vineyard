@@ -6,19 +6,19 @@
 
 
 :root {
-  --bs-primary: #e74c3c;
+  --bs-primary: #050A30;
   --bs-primary-rgb: 231, 76, 60;
   --bs-body-font-family: 'Palatino', sans-serif;
-  --bs-body-color: #F1F1F1;
+  --bs-body-color: #050A30;
 }
 
 :root {
     --bs-body-font-family: Arial, Helvetica, sans-serif;
     --bs-font-sans-serif:  Arial, Helvetica, sans-serif;;
-    --accent-color: #545E75;
-    --bs-body-color: #545E75;
-    --bs-btn-active-bg: #545E75;
-    --bs-btn-active-border-color: #545E75;
+    --accent-color: #FFDE59;
+    --bs-body-color: #FFDE59;
+    --bs-btn-active-bg: #FFDE59;
+    --bs-btn-active-border-color: #FFDE59;
 }
 
 body {
@@ -34,8 +34,8 @@ body h1 {
 
 .btn-primary:active,
 .btn-primary:focus {
-    background-color: #8E9BBB;
-    border-color: #8E9BBB;
+    background-color: #FFDE59;
+    border-color: #FFDE59;
 }
 
 html { 
@@ -86,7 +86,7 @@ html {
 }
 
 .nav-links a {
-    color: white;
+    color: #FFDE59;
     text-decoration: none;
     align-items: center;
 }
@@ -106,7 +106,7 @@ html {
 
 .navbar .nav-link.active {
   font-weight: 600;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #FFDE59;
   
 }
 

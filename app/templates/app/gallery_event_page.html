@@ -46,13 +46,35 @@
             <div class="col-6 col-md-4 col-lg-3">
               <div class="card border-0 shadow-sm h-100">
                 {% image item.image fill-400x300 as img %}
-                <img src="{{ img.url }}" class="card-img-top" alt="{{ page.title }}">
+                {% image item.image width-1200 as full_img %}
+                 <img
+                  src="{{ img.url }}"
+                  class="card-img-top gallery-thumb"
+                  alt="{{ page.title }}"
+                  data-bs-toggle="modal"
+                  data-bs-target="#galleryModal"
+                  data-full="{{ full_img.url }}"
+                  style="cursor: pointer;"
+                >
+                {% comment %} <img src="{{ img.url }}" class="card-img-top" alt="{{ page.title }}"> {% endcomment %}
               </div>
             </div>
           {% endif %}
         {% endfor %}
       </div>
     </div>
+
+
+
+<div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-transparent border-0 shadow-none">
+      <div class="modal-body p-0 text-center">
+        <img id="modal-img" src="" class="img-fluid rounded" alt="">
+      </div>
+    </div>
+  </div>
+</div>
   {% endif %}
 
 

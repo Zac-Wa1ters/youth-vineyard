@@ -56,7 +56,6 @@
                   data-full="{{ full_img.url }}"
                   style="cursor: pointer;"
                 >
-                {% comment %} <img src="{{ img.url }}" class="card-img-top" alt="{{ page.title }}"> {% endcomment %}
               </div>
             </div>
           {% endif %}
@@ -69,11 +68,18 @@
 <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content bg-transparent border-0 shadow-none">
+        <button
+          type="button"
+          class ="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
       <div class="modal-body p-0 text-center">
         <img id="modal-img" src="" class="img-fluid rounded" alt="">
       </div>
     </div>
-  </div>
+  {% comment %} </div> {% endcomment %}
 </div>
   {% endif %}
 

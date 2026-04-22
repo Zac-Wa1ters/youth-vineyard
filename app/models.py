@@ -431,7 +431,7 @@ class ContactPage(Page):
 
 class RocketteAboutPage(Page):
     parent_page_types = ["app.LandingPage"]
-    
+
     hero_title = models.CharField(max_length=255, blank=True)
     intro_text = RichTextField(blank=True)
 
@@ -460,7 +460,7 @@ class RocketteAboutPage(Page):
         on_delete=models.SET_NULL,
         related_name="+"
     )
-
+    pwam_teach = RichTextField(blank=True)
     pwam_impact = RichTextField(blank=True)
 
     cta_text = models.CharField(max_length=255, blank=True)
@@ -470,11 +470,15 @@ class RocketteAboutPage(Page):
         FieldPanel("hero_title"),
         FieldPanel("intro_text"),
         FieldPanel("training_items"),
-        FieldPanel("programs_intro"),
+        FieldPanel("mentorship_text"),
+        FieldPanel("creative_arts_text"),
+        FieldPanel("athletics_text"),
+        FieldPanel("pwam_text"),
         FieldPanel("belief_items"),
         FieldPanel("pwam_quote"),
         FieldPanel("pwam_overview"),
         FieldPanel("pwam_image"),
+        FieldPanel("pwam_teach"),
         FieldPanel("pwam_impact"),
         FieldPanel("cta_text"),
         FieldPanel("cta_button_text"),

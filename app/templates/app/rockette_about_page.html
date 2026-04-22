@@ -14,10 +14,10 @@
 
   <!-- INTRO + TRAINING -->
   <section>
-    <h1>About Rockette Studios</h1>
+    <h1>What We Do</h1>
     {{ page.intro_text|richtext }}
 
-    <h2>Training Includes:</h2>
+    <h3>Participants recieve hands-on training in:</h3>
     {{ page.training_items|richtext }}
   </section>
 
@@ -29,17 +29,17 @@
       <p>{{ page.programs_intro }}</p>
     {% endif %}
 
-    <h3>Mentorship & Leadership</h3>
+    <h4>Mentorship & Leadership</h4>
     {{ page.mentorship_text|richtext }}
 
-    <h3>Creative Arts Training</h3>
+    <h4>Creative Arts Training</h4>
     {{ page.creative_arts_text|richtext }}
 
-    <h3>Athletics Development</h3>
+    <h4>Athletics Development</h4>
     {{ page.athletics_text|richtext }}
 
     <!-- PWAM teaser block -->
-    <h3>Performers With A Message</h3>
+    <h4>Performers With A Message</h4>
     <p>{{ page.pwam_text|richtext }}</p>
 
     <a href="#pwam" class="page-button">
@@ -56,22 +56,26 @@
     {{ page.belief_items|richtext }}
   </section>
 
-  <!-- PWAM -->
-  <section id="pwam">
-    <h1>Performers With A Message</h1>
+   <!-- Perfomers with a Message  -->
 
-    {{ page.pwam_quote|richtext }}
+ <section class="hero">
+  <h1>Performers With A Message</h1>
 
-    <h3>Overview</h3>
-    {{ page.pwam_overview|richtext }}
+  <h4>{{ page.pwam_quote|richtext }}</h4>
 
-    <h2>Impact</h2>
-    {{ page.pwam_impact|richtext }}
+  <h3>What is Perfomers with a Message?</h3>
+  {{ page.pwam_overview|richtext }}
 
-    {% if page.pwam_image %}
-      {% image page.pwam_image fill-800x500 %}
-    {% endif %}
-  </section>
+  <h3>What We Teach</h3>
+  {{ page. |richtext}}
+
+  <h2>Impact</h2>
+  {{ page.pwam_impact|richtext }}
+
+  {% if page.pwam_image %}
+    {% image page.pwam_image fill-800x500 %}
+  {% endif %}
+</section>
 
   <!-- CTA -->
   <section>

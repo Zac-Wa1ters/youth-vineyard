@@ -429,7 +429,57 @@ class ContactPage(Page):
     class Meta:
         verbose_name = "Contact Page"
 
+class RocketteAboutPage(Page):
+    parent_page_types = ["app.LandingPage"]
+    
+    hero_title = models.CharField(max_length=255, blank=True)
+    intro_text = RichTextField(blank=True)
 
+    training_items = RichTextField(
+        blank=True,
+        help_text="List of training areas (bulleted list recommended)"
+    )
+
+    programs_intro = models.CharField(max_length=255, blank=True)
+    mentorship_text = RichTextField(blank=True)
+    creative_arts_text = RichTextField(blank=True)
+    athletics_text = RichTextField(blank=True)
+    pwam_text = RichTextField(blank=True)
+
+    belief_items = RichTextField(
+        blank=True,
+        help_text="Short belief statements (bulleted list recommended)"
+    )
+    pwam_quote = RichTextField(blank=True)
+    pwam_overview = RichTextField(blank=True)
+
+    pwam_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+"
+    )
+
+    pwam_impact = RichTextField(blank=True)
+
+    cta_text = models.CharField(max_length=255, blank=True)
+    cta_button_text = models.CharField(max_length=50, default="Contact Us")
+
+    content_panels = Page.content_panels + [
+        FieldPanel("hero_title"),
+        FieldPanel("intro_text"),
+        FieldPanel("training_items"),
+        FieldPanel("programs_intro"),
+        FieldPanel("belief_items"),
+        FieldPanel("pwam_quote"),
+        FieldPanel("pwam_overview"),
+        FieldPanel("pwam_image"),
+        FieldPanel("pwam_impact"),
+        FieldPanel("cta_text"),
+        FieldPanel("cta_button_text"),
+    ]
+    
 
 
 

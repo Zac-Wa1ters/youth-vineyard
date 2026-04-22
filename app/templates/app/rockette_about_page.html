@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+
+<div class="rockette-about">
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>{{ page.hero_title }}</h1>
+  </section>
+
+  <!-- INTRO + TRAINING -->
+  <section>
+    <h1>About Rockette Studios</h1>
+    {{ page.intro_text|richtext }}
+
+    <h2>Training Includes:</h2>
+    {{ page.training_items|richtext }}
+  </section>
+
+  <!-- PROGRAMS -->
+  <section>
+    <h1>Our Programs</h1>
+
+    {% if page.programs_intro %}
+      <p>{{ page.programs_intro }}</p>
+    {% endif %}
+
+    <h3>Mentorship & Leadership</h3>
+    {{ page.mentorship_text|richtext }}
+
+    <h3>Creative Arts Training</h3>
+    {{ page.creative_arts_text|richtext }}
+
+    <h3>Athletics Development</h3>
+    {{ page.athletics_text|richtext }}
+
+    <!-- PWAM teaser block -->
+    <h3>Performers With A Message</h3>
+    <p>{{ page.pwam_text|richtext }}</p>
+
+    <a href="#pwam" class="page-button">
+        Learn More
+    </a>
+
+  </section>
+
+  
+
+  <!-- BELIEF -->
+  <section>
+    <h1>Our Belief</h1>
+    {{ page.belief_items|richtext }}
+  </section>
+
+  <!-- PWAM -->
+  <section id="pwam">
+    <h1>Performers With A Message</h1>
+
+    {{ page.pwam_quote|richtext }}
+
+    <h3>Overview</h3>
+    {{ page.pwam_overview|richtext }}
+
+    <h2>Impact</h2>
+    {{ page.pwam_impact|richtext }}
+
+    {% if page.pwam_image %}
+      {% image page.pwam_image fill-800x500 %}
+    {% endif %}
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <h1>Join Us</h1>
+    <p>{{ page.cta_text }}</p>
+
+    <a href="/contact/" class="page-button">
+      {{ page.cta_button_text }}
+    </a>
+  </section>
+
+</div>
+
+
+{% endblock %}

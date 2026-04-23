@@ -17,7 +17,7 @@
     <h1>What We Do</h1>
     {{ page.intro_text|richtext }}
 
-    <h3>Participants recieve hands-on training in:</h3>
+    {% comment %} <h3>Participants recieve hands-on training in:</h3> {% endcomment %}
     {{ page.training_items|richtext }}
   </section>
 
@@ -58,18 +58,18 @@
 
    <!-- Perfomers with a Message  -->
 
- <section class="hero">
-  <h1>Performers With A Message</h1>
+ <section >
+  <h1>Feature Program: Performers With A Message</h1>
 
   <h4>{{ page.pwam_quote|richtext }}</h4>
 
-  <h3>What is Perfomers with a Message?</h3>
+  <h3>What is Performers with a Message?</h3>
   {{ page.pwam_overview|richtext }}
 
   <h3>What We Teach</h3>
-  {{ page. |richtext}}
+  {{ page.pwam_teach|richtext}}
 
-  <h2>Impact</h2>
+  <h3>Impact</h3>
   {{ page.pwam_impact|richtext }}
 
   {% if page.pwam_image %}

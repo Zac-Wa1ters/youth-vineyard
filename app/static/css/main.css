@@ -2,12 +2,9 @@
    BODY
    ======================== */
 
-
-
-
 :root {
   --bs-primary: #050A30;
-  --bs-primary-rgb: 231, 76, 60;
+  --bs-primary-rgb: 5, 10, 48;
   --bs-body-font-family: 'Palatino', sans-serif;
   --bs-body-color: #050A30;
 }
@@ -15,10 +12,10 @@
 :root {
     --bs-body-font-family: Arial, Helvetica, sans-serif;
     --bs-font-sans-serif:  Arial, Helvetica, sans-serif;;
-    --accent-color: #FFDE59;
-    --bs-body-color: #FFDE59;
-    --bs-btn-active-bg: #FFDE59;
-    --bs-btn-active-border-color: #FFDE59;
+    --accent-color: #050A30;;
+    --bs-body-color: #050A30;
+    --bs-btn-active-bg: #050A30;;
+    --bs-btn-active-border-color: #050A30;
 }
 
 body {
@@ -375,10 +372,10 @@ section {
 section h1 {
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     font-weight: normal;
-    color: var(--bs-primary);
+    color: var(--accent-color);
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--bs-primary);
+    border-bottom: 1px solid var(--accent-color);
 }
 
 .about-page section .rich-text p {

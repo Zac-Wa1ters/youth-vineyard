@@ -29,17 +29,17 @@
       <p>{{ page.programs_intro }}</p>
     {% endif %}
 
-    <h4>Mentorship & Leadership</h4>
+    <h6>Mentorship & Leadership</h6>
     {{ page.mentorship_text|richtext }}
 
-    <h4>Creative Arts Training</h4>
+    <h6>Creative Arts Training</h6>
     {{ page.creative_arts_text|richtext }}
 
-    <h4>Athletics Development</h4>
+    <h6>Athletics Development</h6>
     {{ page.athletics_text|richtext }}
 
     <!-- PWAM teaser block -->
-    <h4>Performers With A Message</h4>
+    <h6>Performers With A Message</h6>
     <p>{{ page.pwam_text|richtext }}</p>
 
     <a href="#pwam" class="page-button">
@@ -61,15 +61,16 @@
  <section id="pwam">
   <h1>Feature Program: Performers With A Message</h1>
 
-  <h4>{{ page.pwam_quote|richtext }}</h4>
 
-  <h3>What is Performers with a Message?</h3>
+  <h6 class="pwam-quote">{{ page.pwam_quote|richtext }}</h6>
+
+  <h6>What is Performers with a Message?</h6>
   {{ page.pwam_overview|richtext }}
 
-  <h3>What We Teach</h3>
+  <h6>What We Teach</h6>
   {{ page.pwam_teach|richtext}}
 
-  <h3>Impact</h3>
+  <h6>Impact</h6>
   {{ page.pwam_impact|richtext }}
 
   {% if page.pwam_image %}

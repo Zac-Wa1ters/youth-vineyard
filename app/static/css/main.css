@@ -646,6 +646,21 @@ color: white;
 
 
 
+.pwam-quote{
+
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: var(--bs-primary);
+    max-width: 600px;           
+    line-height: 1.6;       
+}
+
+
+
+
+
+
 
 /* ========================
    MEDIA QUERIES

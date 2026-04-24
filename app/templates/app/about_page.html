@@ -1,4 +1,123 @@
 {% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+<div class="about">
+
+<section class="hero">
+    {% if page.hero_title %}
+        <h1>{{ page.hero_title }}</h1>
+    {% endif %}
+
+    {% if page.hero_image %}
+        {% image page.hero_image fill-1200x800 %}
+    {% endif %}
+</section>
+
+{% if page.organization_story %}
+<section>
+    <h1>What is Youth Vineyard?</h1>
+    {{ page.organization_story|richtext }}
+</section>
+{% endif %}
+
+{% if page.founder_bio %}
+<section>
+    <h1>About the Founder</h1>
+    {{ page.founder_bio|richtext }}
+</section>
+{% endif %}
+
+{% if page.mission_statement %}
+<section>
+    <h1>Our Mission</h1>
+    {{ page.mission_statement|richtext }}
+</section>
+{% endif %}
+
+{% if page.mentalhealth_services %}
+<section>
+    <h1>Mental Health Services</h1>
+    {{ page.mentalhealth_services|richtext }}
+</section>
+{% endif %}
+
+{% if page.impact_text %}
+<section>
+    <h1>Our Impact</h1>
+    {{ page.impact_text|richtext }}
+</section>
+{% endif %}
+
+{% if page.partner_text %}
+<section>
+    <h1>Partner With Us</h1>
+    {{ page.partner_text|richtext }}
+
+    {% if contact_email %}
+    <div class="contact-button">
+        <a href="mailto:{{ contact_email }}?subject=Partnership Inquiry"
+           class="btn btn-primary"
+           style="margin-bottom: 1rem;">
+           Partner With Us
+        </a>
+    </div>
+    {% endif %}
+</section>
+{% endif %}
+
+{% if page.youth_support %}
+<section>
+    <h1>Supporting the Youth Community</h1>
+    {{ page.youth_support|richtext }}
+</section>
+{% endif %}
+
+{% if page.community_programs %}
+<section>
+    <h1>Community Programs</h1>
+    {{ page.community_programs|richtext }}
+</section>
+{% endif %}
+
+{% if page.locations %}
+<section>
+    <h1>Locations</h1>
+    {{ page.locations|richtext }}
+</section>
+{% endif %}
+
+{% if page.donate_text or page.donate_cashapp or page.donate_venmo %}
+<section>
+    <h1>How You Can Help</h1>
+
+    {% if page.donate_text %}
+        {{ page.donate_text|richtext }}
+    {% endif %}
+
+    {% if page.donate_cashapp or page.donate_venmo %}
+    <div class="donate-buttons">
+        {% if page.donate_cashapp %}
+            <a href="{{ page.donate_cashapp }}" class="page-button">CashApp</a>
+        {% endif %}
+        {% if page.donate_venmo %}
+            <a href="{{ page.donate_venmo }}" class="page-button">Venmo</a>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</section>
+{% endif %}
+
+</div>
+
+{% endblock %}
+
+
+
+
+{% comment %} {% extends "base.html" %}
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
@@ -8,7 +127,7 @@
 <section class="hero">
     <h1>{{ page.hero_title}}</h1>
 
-    {%image page.hero_image fill-1200x400%}
+    {%image page.hero_image fill-1200x800%}
 </section>
 
 <section>
@@ -33,6 +152,34 @@
 </section>
 
 <section>
+    <h1>Our Impact</h1>
+    {{ page.impact_text|richtext}}
+</section>
+
+<section>
+    <h1>Partner With Us</h1>
+    {{ page.partner_text|richtext}}
+ <div class="contact-button">
+      <a href="mailto:{{ contact_email }}?subject=Partnership Inquiry"class="btn btn-primary" style="margin-bottom: 1rem;">Partner With Us</a>
+    </div>
+</section>
+
+<section>
+    <h1>Supporting the Youth Community</h1>
+    {{ page.youth_support|richtext}}
+</section>
+
+<section>
+    <h1>Community Programs</h1>
+    {{ page.community_programs|richtext}}
+</section>
+
+<section>
+    <h1>Locations</h1>
+    {{ page.locations|richtext}}
+</section>
+
+<section>
     <h1>How You Can Help</h1>
     {{ page.donate_text|richtext}}
 
@@ -49,4 +196,4 @@
 
 
 
-{% endblock %}
+{% endblock %} {% endcomment %}

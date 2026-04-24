@@ -70,6 +70,12 @@ class AboutPage(Page):
     founder_bio = RichTextField()
     mission_statement = RichTextField()
     mentalhealth_services = RichTextField()
+    impact_text = RichTextField(blank=True, null=True)
+    partner_text = RichTextField(blank=True, null=True)
+    #have button here in template (mailto)
+    youth_support = RichTextField(blank=True, null=True)
+    community_programs = RichTextField(blank=True, null=True)
+    locations = RichTextField(blank=True, null=True)
     donate_text = RichTextField(blank=True, null=True)
     donate_cashapp = models.URLField(max_length=1000,blank=True)
     donate_venmo = models.URLField(max_length=1000,blank=True)
@@ -81,10 +87,21 @@ class AboutPage(Page):
         FieldPanel("founder_bio"),
         FieldPanel("mission_statement"),
         FieldPanel("mentalhealth_services"),
+        FieldPanel("impact_text"),
+        FieldPanel("partner_text"),
+        FieldPanel("youth_support"),
+        FieldPanel("community_programs"),
+        FieldPanel("locations"),
         FieldPanel("donate_text"),
         FieldPanel("donate_cashapp"),
         FieldPanel("donate_venmo"),
     ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        contact_page = ContactPage.objects.live().first()
+        context['contact_email'] = contact_page.email if contact_page else None
+        return context
 
 class KeynotePage(Page): 
 

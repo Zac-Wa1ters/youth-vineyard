@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2m%zb5_)+junnqznk==w!4*$b62d4k%@4q3n9)yi7j5!ovms0w'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com', 'theyouthvineyard.org']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com', 'theyouthvineyard.org', '.elasticbeanstalk.com','the-youth-vineyard-prod.eba-ybh6u337.us-east-1.elasticbeanstalk.com',]
 
 
 # Application definition
@@ -95,10 +95,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
-    )
-    
+'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 # Password validation
@@ -149,7 +146,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 
 WAGTAIL_SITE_NAME = 'The Youth Vineyard'
 
-WAGTAILADMIN_BASE_URL = 'http://example.com'
+WAGTAILADMIN_BASE_URL = 'https://theyouthvineyard.org'
 
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
@@ -158,6 +155,9 @@ PUBLIC_BASE_URL = "https://nondilatable-overmournfully-shawana.ngrok-free.dev"
 
 CSRF_TRUSTED_ORIGINS = [
     "https://nondilatable-overmournfully-shawana.ngrok-free.dev",
+    "http://the-youth-vineyard-prod.eba-ybh6u337.us-east-1.elasticbeanstalk.com",
+    "https://the-youth-vineyard-prod.eba-ybh6u337.us-east-1.elasticbeanstalk.com",
+
 ]
 
 # AWS Settings

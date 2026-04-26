@@ -27,7 +27,9 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com', 'theyouthvineyard.org', '.elasticbeanstalk.com','the-youth-vineyard-prod.eba-ybh6u337.us-east-1.elasticbeanstalk.com',]
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com', 'theyouthvineyard.org', '.elasticbeanstalk.com','the-youth-vineyard-prod.eba-ybh6u337.us-east-1.elasticbeanstalk.com',]
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition

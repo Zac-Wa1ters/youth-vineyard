@@ -152,5 +152,6 @@ Project Highlights
 
 Author
 ------
-Evalyn Fondren
+Evalyn Fondren,
+
 Zachary Walters
